@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PortGuard-AIS report</title>
+<style>
+body { font-family: system-ui, sans-serif; max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
+.cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1rem; }
+.card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; }
+table { border-collapse: collapse; width: 100%; margin-top: 1rem; }
+th, td { border-bottom: 1px solid #ddd; padding: .55rem; text-align: left; }
+.warning { padding: 1rem; border-left: 4px solid #b45309; background: #fffbeb; }
+</style>
+</head>
+<body>
+<h1>PortGuard-AIS 1.0 report</h1>
+<p class="warning">Research decision support only. This report does not prescribe vessel routes or manoeuvres.</p>
+<div class="cards">
+<div class="card"><strong>Validated AIS rows</strong><br>72</div>
+<div class="card"><strong>Assessments</strong><br>36</div>
+<div class="card"><strong>Emitted alerts</strong><br>6</div>
+<div class="card"><strong>Near misses</strong><br>3</div>
+<div class="card"><strong>Hotspot cells</strong><br>7</div>
+</div>
+<h2>Highest-risk assessments</h2>
+<table>
+<thead><tr><th>Encounter</th><th>Own MMSI</th><th>Target MMSI</th><th>Type</th><th>Risk</th><th>DCPA NM</th><th>TCPA min</th></tr></thead>
+<tbody><tr><td>enc-9d95e2c6177f</td><td>261100001</td><td>261100002</td><td>head-on</td><td>0.994</td><td>0.000</td><td>0.22</td></tr><tr><td>enc-9d95e2c6177f</td><td>261100001</td><td>261100002</td><td>head-on</td><td>0.979</td><td>0.000</td><td>0.72</td></tr><tr><td>enc-9d95e2c6177f</td><td>261100001</td><td>261100002</td><td>head-on</td><td>0.965</td><td>0.000</td><td>1.22</td></tr><tr><td>enc-a5bf98d84b8f</td><td>261200001</td><td>261200002</td><td>crossing-starboard</td><td>0.951</td><td>0.001</td><td>0.06</td></tr><tr><td>enc-9d95e2c6177f</td><td>261100001</td><td>261100002</td><td>head-on</td><td>0.951</td><td>0.000</td><td>1.72</td></tr><tr><td>enc-a5bf98d84b8f</td><td>261200001</td><td>261200002</td><td>crossing-starboard</td><td>0.941</td><td>0.001</td><td>0.56</td></tr><tr><td>enc-9d95e2c6177f</td><td>261100001</td><td>261100002</td><td>head-on</td><td>0.936</td><td>0.000</td><td>2.22</td></tr><tr><td>enc-a5bf98d84b8f</td><td>261200001</td><td>261200002</td><td>crossing-starboard</td><td>0.931</td><td>0.001</td><td>1.06</td></tr><tr><td>enc-9d95e2c6177f</td><td>261100001</td><td>261100002</td><td>head-on</td><td>0.922</td><td>0.000</td><td>2.72</td></tr><tr><td>enc-a5bf98d84b8f</td><td>261200001</td><td>261200002</td><td>crossing-starboard</td><td>0.922</td><td>0.001</td><td>1.56</td></tr><tr><td>enc-f69c22f254bd</td><td>261300001</td><td>261300002</td><td>overtaking</td><td>0.920</td><td>0.000</td><td>0.15</td></tr><tr><td>enc-f69c22f254bd</td><td>261300001</td><td>261300002</td><td>overtaking</td><td>0.913</td><td>0.000</td><td>0.65</td></tr><tr><td>enc-a5bf98d84b8f</td><td>261200001</td><td>261200002</td><td>crossing-starboard</td><td>0.912</td><td>0.001</td><td>2.06</td></tr><tr><td>enc-9d95e2c6177f</td><td>261100001</td><td>261100002</td><td>head-on</td><td>0.908</td><td>0.000</td><td>3.22</td></tr><tr><td>enc-f69c22f254bd</td><td>261300001</td><td>261300002</td><td>overtaking</td><td>0.907</td><td>0.000</td><td>1.15</td></tr><tr><td>enc-a5bf98d84b8f</td><td>261200001</td><td>261200002</td><td>crossing-starboard</td><td>0.902</td><td>0.001</td><td>2.56</td></tr><tr><td>enc-f69c22f254bd</td><td>261300001</td><td>261300002</td><td>overtaking</td><td>0.900</td><td>0.000</td><td>1.65</td></tr><tr><td>enc-f69c22f254bd</td><td>261300001</td><td>261300002</td><td>overtaking</td><td>0.893</td><td>0.000</td><td>2.15</td></tr><tr><td>enc-a5bf98d84b8f</td><td>261200001</td><td>261200002</td><td>crossing-starboard</td><td>0.893</td><td>0.001</td><td>3.06</td></tr><tr><td>enc-f69c22f254bd</td><td>261300001</td><td>261300002</td><td>overtaking</td><td>0.886</td><td>0.000</td><td>2.65</td></tr></tbody>
+</table>
+</body>
+</html>

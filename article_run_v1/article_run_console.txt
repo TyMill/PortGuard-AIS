@@ -1,0 +1,19 @@
+
+=== PortGuard-AIS 1.0.0 - SoftwareX article benchmark ===
+Input rows:         72
+Unique vessels:     6
+Assessments:        36
+Emitted alerts:     6
+Near misses:        3
+Maximum risk score: 0.993642
+
+Scenario results:
+  head-on     | Rule 14 | head-on             | consistency=1.000 | peak=0.993642 | DCPA=0.000000 NM | alerts=2 | near-miss=True
+  crossing    | Rule 15 | crossing-starboard  | consistency=1.000 | peak=0.950651 | DCPA=0.000550 NM | alerts=2 | near-miss=True
+  overtaking  | Rule 13 | overtaking          | consistency=1.000 | peak=0.920011 | DCPA=0.000000 NM | alerts=2 | near-miss=True
+
+Summary JSON: article_run_v1/softwarex_article_summary.json
+Summary CSV:  article_run_v1/outputs/softwarex_scenario_summary.csv
+Environment:  article_run_v1/environment.json
+Manifest:     article_run_v1/manifest_sha256.json
+All article assertions passed.

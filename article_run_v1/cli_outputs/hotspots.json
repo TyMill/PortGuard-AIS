@@ -1,0 +1,65 @@
+[
+  {
+    "latitude_center": 53.405,
+    "longitude_center": 14.605,
+    "cell_size_deg": 0.01,
+    "assessment_count": 8,
+    "unique_vessels": 2,
+    "mean_risk_score": 0.903581,
+    "maximum_risk_score": 0.993642
+  },
+  {
+    "latitude_center": 53.595,
+    "longitude_center": 14.605,
+    "cell_size_deg": 0.01,
+    "assessment_count": 5,
+    "unique_vessels": 2,
+    "mean_risk_score": 0.931325,
+    "maximum_risk_score": 0.950651
+  },
+  {
+    "latitude_center": 53.805,
+    "longitude_center": 14.615,
+    "cell_size_deg": 0.01,
+    "assessment_count": 3,
+    "unique_vessels": 2,
+    "mean_risk_score": 0.814687,
+    "maximum_risk_score": 0.920011
+  },
+  {
+    "latitude_center": 53.805,
+    "longitude_center": 14.605,
+    "cell_size_deg": 0.01,
+    "assessment_count": 4,
+    "unique_vessels": 2,
+    "mean_risk_score": 0.896386,
+    "maximum_risk_score": 0.906511
+  },
+  {
+    "latitude_center": 53.595,
+    "longitude_center": 14.595,
+    "cell_size_deg": 0.01,
+    "assessment_count": 3,
+    "unique_vessels": 2,
+    "mean_risk_score": 0.892561,
+    "maximum_risk_score": 0.902258
+  },
+  {
+    "latitude_center": 53.805,
+    "longitude_center": 14.595,
+    "cell_size_deg": 0.01,
+    "assessment_count": 2,
+    "unique_vessels": 2,
+    "mean_risk_score": 0.876136,
+    "maximum_risk_score": 0.879511
+  },
+  {
+    "latitude_center": 53.605,
+    "longitude_center": 14.605,
+    "cell_size_deg": 0.01,
+    "assessment_count": 1,
+    "unique_vessels": 2,
+    "mean_risk_score": 0.577371,
+    "maximum_risk_score": 0.577371
+  }
+]

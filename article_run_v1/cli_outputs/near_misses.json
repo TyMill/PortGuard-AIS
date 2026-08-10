@@ -1,0 +1,50 @@
+[
+  {
+    "encounter_id": "enc-9d95e2c6177f",
+    "own_mmsi": 261100001,
+    "target_mmsi": 261100002,
+    "started_at": "2026-08-03T12:00:00Z",
+    "ended_at": "2026-08-03T12:05:30Z",
+    "observation_count": 12,
+    "peak_risk_score": 0.993642,
+    "minimum_dcpa_nm": 0.0,
+    "minimum_tcpa_min": 0.221785,
+    "encounter_types": [
+      "head-on",
+      "diverging"
+    ],
+    "severity_rank": 0.996185
+  },
+  {
+    "encounter_id": "enc-a5bf98d84b8f",
+    "own_mmsi": 261200001,
+    "target_mmsi": 261200002,
+    "started_at": "2026-08-03T12:00:00Z",
+    "ended_at": "2026-08-03T12:05:30Z",
+    "observation_count": 12,
+    "peak_risk_score": 0.950651,
+    "minimum_dcpa_nm": 0.00055,
+    "minimum_tcpa_min": 0.060479,
+    "encounter_types": [
+      "crossing-starboard",
+      "diverging"
+    ],
+    "severity_rank": 0.970061
+  },
+  {
+    "encounter_id": "enc-f69c22f254bd",
+    "own_mmsi": 261300001,
+    "target_mmsi": 261300002,
+    "started_at": "2026-08-03T12:00:00Z",
+    "ended_at": "2026-08-03T12:05:30Z",
+    "observation_count": 12,
+    "peak_risk_score": 0.920011,
+    "minimum_dcpa_nm": 0.0,
+    "minimum_tcpa_min": 0.147339,
+    "encounter_types": [
+      "overtaking",
+      "diverging"
+    ],
+    "severity_rank": 0.952007
+  }
+]

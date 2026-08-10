@@ -1,0 +1,23 @@
+ PortGuard-AIS processing 
+         summary          
+┏━━━━━━━━━━━━━━━━┳━━━━━━━┓
+┃ Metric         ┃ Value ┃
+┡━━━━━━━━━━━━━━━━╇━━━━━━━┩
+│ Clean AIS rows │    72 │
+│ Assessments    │    36 │
+│ Emitted alerts │     6 │
+│ Near misses    │     3 │
+│ Hotspot cells  │     7 │
+└────────────────┴───────┘
+assessments_json: article_run_v1/cli_outputs/assessments.json
+assessments_csv: article_run_v1/cli_outputs/assessments.csv
+assessments_geojson: article_run_v1/cli_outputs/assessments.geojson
+alerts_json: article_run_v1/cli_outputs/alerts.json
+alerts_csv: article_run_v1/cli_outputs/alerts.csv
+near_misses_json: article_run_v1/cli_outputs/near_misses.json
+near_misses_csv: article_run_v1/cli_outputs/near_misses.csv
+risk_trends_json: article_run_v1/cli_outputs/risk_trends.json
+risk_trends_csv: article_run_v1/cli_outputs/risk_trends.csv
+hotspots_json: article_run_v1/cli_outputs/hotspots.json
+hotspots_csv: article_run_v1/cli_outputs/hotspots.csv
+html_report: article_run_v1/cli_outputs/report.html

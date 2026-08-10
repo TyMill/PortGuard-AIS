@@ -1,0 +1,8 @@
+{
+  "input_rows": 72,
+  "output_rows": 72,
+  "invalid_rows": 0,
+  "duplicate_rows_removed": 0,
+  "filtered_speed_rows": 0,
+  "warnings": []
+}

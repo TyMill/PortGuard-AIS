@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use PortGuard-AIS, please cite the software and associated publication."
+title: "PortGuard-AIS"
+version: 1.0.0
+date-released: 2026-08-03
+authors:
+  - family-names: Durlik
+    given-names: Irmina
+  - family-names: Miller
+    given-names: Tymoteusz
+license: MIT
+type: software
+repository-code: "https://github.com/OWNER/PortGuard-AIS"

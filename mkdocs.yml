@@ -1,0 +1,30 @@
+site_name: PortGuard-AIS
+site_description: Explainable AIS collision-risk alerts and encounter analytics.
+repo_url: https://github.com/OWNER/PortGuard-AIS
+repo_name: OWNER/PortGuard-AIS
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.top
+    - content.code.copy
+nav:
+  - Home: index.md
+  - Architecture: architecture.md
+  - Input data: input-schema.md
+  - Risk model: risk-model.md
+  - Data quality: data-quality.md
+  - Trends and hotspots: trends-and-hotspots.md
+  - Alert lifecycle: alert-lifecycle.md
+  - COLREG context: colreg-context.md
+  - CLI: cli.md
+  - Python API: python-api.md
+  - Reproducibility: reproducibility.md
+  - SoftwareX benchmark: softwarex-benchmark.md
+  - Scope and safety: scope-and-safety.md
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+  - toc:
+      permalink: true

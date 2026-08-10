@@ -1,0 +1,2646 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.59,
+            53.4
+          ],
+          [
+            14.62,
+            53.4
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-9d95e2c6177f",
+        "timestamp": "2026-08-03T12:00:00Z",
+        "own_mmsi": 261100001,
+        "target_mmsi": 261100002,
+        "encounter_type": "head-on",
+        "risk_level": "critical",
+        "risk_score": 0.907642,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.4,
+          "lon": 14.59
+        },
+        "target_position": {
+          "lat": 53.4,
+          "lon": 14.62
+        },
+        "relative_motion": {
+          "current_distance_nm": 1.073928,
+          "dcpa_nm": 0.0,
+          "tcpa_min": 3.221785,
+          "relative_speed_kn": 20.0,
+          "closing_speed_kn": 20.0,
+          "converging": true,
+          "relative_bearing_deg": 0.0,
+          "cpa_east_nm": -0.0,
+          "cpa_north_nm": -0.0
+        },
+        "domain": {
+          "forward_nm": 0.385709,
+          "aft_nm": 0.113391,
+          "lateral_nm": 0.113391,
+          "normalized_distance": 0.0,
+          "violated": true
+        },
+        "colreg": {
+          "rule": "Rule 14",
+          "own_role": "mutual-action",
+          "target_role": "mutual-action",
+          "explanation": "Head-on context; both vessels require coordinated compliance monitoring."
+        },
+        "components": {
+          "dcpa": 1.0,
+          "tcpa": 0.9284047777777777,
+          "range": 0.463036,
+          "closing_speed": 1.0,
+          "domain": 1.0
+        },
+        "rationale": [
+          "encounter geometry classified as head-on",
+          "closest point of approach is expected within 10 minutes",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "predicted CPA enters the configured own-vessel domain",
+          "dominant normalized risk component is dcpa (1.000)",
+          "combined score exceeds the critical threshold"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.59,
+            53.6
+          ],
+          [
+            14.605,
+            53.5921
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-a5bf98d84b8f",
+        "timestamp": "2026-08-03T12:00:00Z",
+        "own_mmsi": 261200001,
+        "target_mmsi": 261200002,
+        "encounter_type": "crossing-starboard",
+        "risk_level": "critical",
+        "risk_score": 0.882864,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.6,
+          "lon": 14.59
+        },
+        "target_position": {
+          "lat": 53.5921,
+          "lon": 14.605
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.714602,
+          "dcpa_nm": 0.000583,
+          "tcpa_min": 3.560665,
+          "relative_speed_kn": 12.041595,
+          "closing_speed_kn": 12.041591,
+          "converging": true,
+          "relative_bearing_deg": 41.586795,
+          "cpa_east_nm": 0.000387,
+          "cpa_north_nm": 0.000436
+        },
+        "domain": {
+          "forward_nm": 0.312581,
+          "aft_nm": 0.089093,
+          "lateral_nm": 0.089093,
+          "normalized_distance": 0.005048,
+          "violated": true
+        },
+        "colreg": {
+          "rule": "Rule 15",
+          "own_role": "give-way",
+          "target_role": "stand-on",
+          "explanation": "Target is detected on the own vessel's starboard side."
+        },
+        "components": {
+          "dcpa": 0.998834,
+          "tcpa": 0.9208741111111111,
+          "range": 0.642699,
+          "closing_speed": 0.60207955,
+          "domain": 1.0
+        },
+        "rationale": [
+          "encounter geometry classified as crossing-starboard",
+          "closest point of approach is expected within 10 minutes",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "predicted CPA enters the configured own-vessel domain",
+          "dominant normalized risk component is domain (1.000)",
+          "combined score exceeds the critical threshold"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.59,
+            53.8
+          ],
+          [
+            14.602,
+            53.8
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-f69c22f254bd",
+        "timestamp": "2026-08-03T12:00:00Z",
+        "own_mmsi": 261300001,
+        "target_mmsi": 261300002,
+        "encounter_type": "overtaking",
+        "risk_level": "critical",
+        "risk_score": 0.872761,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.8,
+          "lon": 14.59
+        },
+        "target_position": {
+          "lat": 53.8,
+          "lon": 14.602
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.425523,
+          "dcpa_nm": 0.0,
+          "tcpa_min": 3.647339,
+          "relative_speed_kn": 7.0,
+          "closing_speed_kn": 7.0,
+          "converging": true,
+          "relative_bearing_deg": 0.0,
+          "cpa_east_nm": 0.0,
+          "cpa_north_nm": -0.0
+        },
+        "domain": {
+          "forward_nm": 0.332649,
+          "aft_nm": 0.080994,
+          "lateral_nm": 0.080994,
+          "normalized_distance": 0.0,
+          "violated": true
+        },
+        "colreg": {
+          "rule": "Rule 13",
+          "own_role": "give-way",
+          "target_role": "stand-on",
+          "explanation": "Own vessel is approaching from abaft the target's beam."
+        },
+        "components": {
+          "dcpa": 1.0,
+          "tcpa": 0.9189480222222222,
+          "range": 0.7872385,
+          "closing_speed": 0.35,
+          "domain": 1.0
+        },
+        "rationale": [
+          "encounter geometry classified as overtaking",
+          "closest point of approach is expected within 10 minutes",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "predicted CPA enters the configured own-vessel domain",
+          "dominant normalized risk component is dcpa (1.000)",
+          "combined score exceeds the critical threshold"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.592327901748643,
+            53.4
+          ],
+          [
+            14.617672098251356,
+            53.4
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-9d95e2c6177f",
+        "timestamp": "2026-08-03T12:00:30Z",
+        "own_mmsi": 261100001,
+        "target_mmsi": 261100002,
+        "encounter_type": "head-on",
+        "risk_level": "critical",
+        "risk_score": 0.921975,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.4,
+          "lon": 14.592327901748643
+        },
+        "target_position": {
+          "lat": 53.4,
+          "lon": 14.617672098251356
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.907262,
+          "dcpa_nm": 0.0,
+          "tcpa_min": 2.721785,
+          "relative_speed_kn": 20.0,
+          "closing_speed_kn": 20.0,
+          "converging": true,
+          "relative_bearing_deg": 0.0,
+          "cpa_east_nm": 0.0,
+          "cpa_north_nm": -0.0
+        },
+        "domain": {
+          "forward_nm": 0.385709,
+          "aft_nm": 0.113391,
+          "lateral_nm": 0.113391,
+          "normalized_distance": 0.0,
+          "violated": true
+        },
+        "colreg": {
+          "rule": "Rule 14",
+          "own_role": "mutual-action",
+          "target_role": "mutual-action",
+          "explanation": "Head-on context; both vessels require coordinated compliance monitoring."
+        },
+        "components": {
+          "dcpa": 1.0,
+          "tcpa": 0.9395158888888889,
+          "range": 0.546369,
+          "closing_speed": 1.0,
+          "domain": 1.0
+        },
+        "rationale": [
+          "encounter geometry classified as head-on",
+          "closest point of approach is expected within 10 minutes",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "predicted CPA enters the configured own-vessel domain",
+          "dominant normalized risk component is dcpa (1.000)",
+          "combined score exceeds the critical threshold"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.592105018334122,
+            53.6
+          ],
+          [
+            14.605,
+            53.593210362343214
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-a5bf98d84b8f",
+        "timestamp": "2026-08-03T12:00:30Z",
+        "own_mmsi": 261200001,
+        "target_mmsi": 261200002,
+        "encounter_type": "crossing-starboard",
+        "risk_level": "critical",
+        "risk_score": 0.892562,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.6,
+          "lon": 14.592105018334122
+        },
+        "target_position": {
+          "lat": 53.593210362343214,
+          "lon": 14.605
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.614245,
+          "dcpa_nm": 0.000574,
+          "tcpa_min": 3.060617,
+          "relative_speed_kn": 12.041595,
+          "closing_speed_kn": 12.041589,
+          "converging": true,
+          "relative_bearing_deg": 41.579967,
+          "cpa_east_nm": 0.000382,
+          "cpa_north_nm": 0.000429
+        },
+        "domain": {
+          "forward_nm": 0.312581,
+          "aft_nm": 0.089093,
+          "lateral_nm": 0.089093,
+          "normalized_distance": 0.004968,
+          "violated": true
+        },
+        "colreg": {
+          "rule": "Rule 15",
+          "own_role": "give-way",
+          "target_role": "stand-on",
+          "explanation": "Target is detected on the own vessel's starboard side."
+        },
+        "components": {
+          "dcpa": 0.998852,
+          "tcpa": 0.9319862888888889,
+          "range": 0.6928775,
+          "closing_speed": 0.60207945,
+          "domain": 1.0
+        },
+        "rationale": [
+          "encounter geometry classified as crossing-starboard",
+          "closest point of approach is expected within 10 minutes",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "predicted CPA enters the configured own-vessel domain",
+          "dominant normalized risk component is domain (1.000)",
+          "combined score exceeds the critical threshold"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.593290070189223,
+            53.8
+          ],
+          [
+            14.603645035094612,
+            53.8
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-f69c22f254bd",
+        "timestamp": "2026-08-03T12:00:30Z",
+        "own_mmsi": 261300001,
+        "target_mmsi": 261300002,
+        "encounter_type": "overtaking",
+        "risk_level": "critical",
+        "risk_score": 0.879511,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.8,
+          "lon": 14.593290070189223
+        },
+        "target_position": {
+          "lat": 53.8,
+          "lon": 14.603645035094612
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.36719,
+          "dcpa_nm": 0.0,
+          "tcpa_min": 3.147339,
+          "relative_speed_kn": 7.0,
+          "closing_speed_kn": 7.0,
+          "converging": true,
+          "relative_bearing_deg": 0.0,
+          "cpa_east_nm": -0.0,
+          "cpa_north_nm": -0.0
+        },
+        "domain": {
+          "forward_nm": 0.332649,
+          "aft_nm": 0.080994,
+          "lateral_nm": 0.080994,
+          "normalized_distance": 0.0,
+          "violated": true
+        },
+        "colreg": {
+          "rule": "Rule 13",
+          "own_role": "give-way",
+          "target_role": "stand-on",
+          "explanation": "Own vessel is approaching from abaft the target's beam."
+        },
+        "components": {
+          "dcpa": 1.0,
+          "tcpa": 0.9300591333333333,
+          "range": 0.816405,
+          "closing_speed": 0.35,
+          "domain": 1.0
+        },
+        "rationale": [
+          "encounter geometry classified as overtaking",
+          "closest point of approach is expected within 10 minutes",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "predicted CPA enters the configured own-vessel domain",
+          "dominant normalized risk component is dcpa (1.000)",
+          "combined score exceeds the critical threshold"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.594655803497284,
+            53.4
+          ],
+          [
+            14.615344196502715,
+            53.4
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-9d95e2c6177f",
+        "timestamp": "2026-08-03T12:01:00Z",
+        "own_mmsi": 261100001,
+        "target_mmsi": 261100002,
+        "encounter_type": "head-on",
+        "risk_level": "critical",
+        "risk_score": 0.936309,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.4,
+          "lon": 14.594655803497284
+        },
+        "target_position": {
+          "lat": 53.4,
+          "lon": 14.615344196502715
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.740595,
+          "dcpa_nm": 0.0,
+          "tcpa_min": 2.221785,
+          "relative_speed_kn": 20.0,
+          "closing_speed_kn": 20.0,
+          "converging": true,
+          "relative_bearing_deg": 0.0,
+          "cpa_east_nm": -0.0,
+          "cpa_north_nm": -0.0
+        },
+        "domain": {
+          "forward_nm": 0.385709,
+          "aft_nm": 0.113391,
+          "lateral_nm": 0.113391,
+          "normalized_distance": 0.0,
+          "violated": true
+        },
+        "colreg": {
+          "rule": "Rule 14",
+          "own_role": "mutual-action",
+          "target_role": "mutual-action",
+          "explanation": "Head-on context; both vessels require coordinated compliance monitoring."
+        },
+        "components": {
+          "dcpa": 1.0,
+          "tcpa": 0.950627,
+          "range": 0.6297025,
+          "closing_speed": 1.0,
+          "domain": 1.0
+        },
+        "rationale": [
+          "encounter geometry classified as head-on",
+          "closest point of approach is expected within 10 minutes",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "predicted CPA enters the configured own-vessel domain",
+          "dominant normalized risk component is dcpa (1.000)",
+          "combined score exceeds the critical threshold"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.594210036668242,
+            53.6
+          ],
+          [
+            14.605,
+            53.594320724686426
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-a5bf98d84b8f",
+        "timestamp": "2026-08-03T12:01:00Z",
+        "own_mmsi": 261200001,
+        "target_mmsi": 261200002,
+        "encounter_type": "crossing-starboard",
+        "risk_level": "critical",
+        "risk_score": 0.902258,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.6,
+          "lon": 14.594210036668242
+        },
+        "target_position": {
+          "lat": 53.594320724686426,
+          "lon": 14.605
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.513891,
+          "dcpa_nm": 0.000567,
+          "tcpa_min": 2.560575,
+          "relative_speed_kn": 12.041595,
+          "closing_speed_kn": 12.041587,
+          "converging": true,
+          "relative_bearing_deg": 41.570326,
+          "cpa_east_nm": 0.000377,
+          "cpa_north_nm": 0.000424
+        },
+        "domain": {
+          "forward_nm": 0.312581,
+          "aft_nm": 0.089093,
+          "lateral_nm": 0.089093,
+          "normalized_distance": 0.00491,
+          "violated": true
+        },
+        "colreg": {
+          "rule": "Rule 15",
+          "own_role": "give-way",
+          "target_role": "stand-on",
+          "explanation": "Target is detected on the own vessel's starboard side."
+        },
+        "components": {
+          "dcpa": 0.998866,
+          "tcpa": 0.9430983333333334,
+          "range": 0.7430545,
+          "closing_speed": 0.60207935,
+          "domain": 1.0
+        },
+        "rationale": [
+          "encounter geometry classified as crossing-starboard",
+          "closest point of approach is expected within 10 minutes",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "predicted CPA enters the configured own-vessel domain",
+          "dominant normalized risk component is domain (1.000)",
+          "combined score exceeds the critical threshold"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.596580140378448,
+            53.8
+          ],
+          [
+            14.605290070189223,
+            53.8
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-f69c22f254bd",
+        "timestamp": "2026-08-03T12:01:00Z",
+        "own_mmsi": 261300001,
+        "target_mmsi": 261300002,
+        "encounter_type": "overtaking",
+        "risk_level": "critical",
+        "risk_score": 0.886261,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.8,
+          "lon": 14.596580140378448
+        },
+        "target_position": {
+          "lat": 53.8,
+          "lon": 14.605290070189223
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.308856,
+          "dcpa_nm": 0.0,
+          "tcpa_min": 2.647339,
+          "relative_speed_kn": 7.0,
+          "closing_speed_kn": 7.0,
+          "converging": true,
+          "relative_bearing_deg": 0.0,
+          "cpa_east_nm": 0.0,
+          "cpa_north_nm": -0.0
+        },
+        "domain": {
+          "forward_nm": 0.332649,
+          "aft_nm": 0.080994,
+          "lateral_nm": 0.080994,
+          "normalized_distance": 0.0,
+          "violated": true
+        },
+        "colreg": {
+          "rule": "Rule 13",
+          "own_role": "give-way",
+          "target_role": "stand-on",
+          "explanation": "Own vessel is approaching from abaft the target's beam."
+        },
+        "components": {
+          "dcpa": 1.0,
+          "tcpa": 0.9411702444444444,
+          "range": 0.845572,
+          "closing_speed": 0.35,
+          "domain": 1.0
+        },
+        "rationale": [
+          "encounter geometry classified as overtaking",
+          "closest point of approach is expected within 10 minutes",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "predicted CPA enters the configured own-vessel domain",
+          "dominant normalized risk component is dcpa (1.000)",
+          "combined score exceeds the critical threshold"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.596983705245927,
+            53.4
+          ],
+          [
+            14.613016294754072,
+            53.4
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-9d95e2c6177f",
+        "timestamp": "2026-08-03T12:01:30Z",
+        "own_mmsi": 261100001,
+        "target_mmsi": 261100002,
+        "encounter_type": "head-on",
+        "risk_level": "critical",
+        "risk_score": 0.950642,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.4,
+          "lon": 14.596983705245927
+        },
+        "target_position": {
+          "lat": 53.4,
+          "lon": 14.613016294754072
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.573928,
+          "dcpa_nm": 0.0,
+          "tcpa_min": 1.721785,
+          "relative_speed_kn": 20.0,
+          "closing_speed_kn": 20.0,
+          "converging": true,
+          "relative_bearing_deg": 0.0,
+          "cpa_east_nm": 0.0,
+          "cpa_north_nm": -0.0
+        },
+        "domain": {
+          "forward_nm": 0.385709,
+          "aft_nm": 0.113391,
+          "lateral_nm": 0.113391,
+          "normalized_distance": 0.0,
+          "violated": true
+        },
+        "colreg": {
+          "rule": "Rule 14",
+          "own_role": "mutual-action",
+          "target_role": "mutual-action",
+          "explanation": "Head-on context; both vessels require coordinated compliance monitoring."
+        },
+        "components": {
+          "dcpa": 1.0,
+          "tcpa": 0.9617381111111111,
+          "range": 0.713036,
+          "closing_speed": 1.0,
+          "domain": 1.0
+        },
+        "rationale": [
+          "encounter geometry classified as head-on",
+          "closest point of approach is expected within 10 minutes",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "predicted CPA enters the configured own-vessel domain",
+          "dominant normalized risk component is dcpa (1.000)",
+          "combined score exceeds the critical threshold"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.596315055002364,
+            53.6
+          ],
+          [
+            14.605,
+            53.59543108702964
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-a5bf98d84b8f",
+        "timestamp": "2026-08-03T12:01:30Z",
+        "own_mmsi": 261200001,
+        "target_mmsi": 261200002,
+        "encounter_type": "crossing-starboard",
+        "risk_level": "critical",
+        "risk_score": 0.911953,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.6,
+          "lon": 14.596315055002364
+        },
+        "target_position": {
+          "lat": 53.59543108702964,
+          "lon": 14.605
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.413537,
+          "dcpa_nm": 0.000561,
+          "tcpa_min": 2.060542,
+          "relative_speed_kn": 12.041595,
+          "closing_speed_kn": 12.041584,
+          "converging": true,
+          "relative_bearing_deg": 41.555824,
+          "cpa_east_nm": 0.000373,
+          "cpa_north_nm": 0.000419
+        },
+        "domain": {
+          "forward_nm": 0.312581,
+          "aft_nm": 0.089093,
+          "lateral_nm": 0.089093,
+          "normalized_distance": 0.004852,
+          "violated": true
+        },
+        "colreg": {
+          "rule": "Rule 15",
+          "own_role": "give-way",
+          "target_role": "stand-on",
+          "explanation": "Target is detected on the own vessel's starboard side."
+        },
+        "components": {
+          "dcpa": 0.998878,
+          "tcpa": 0.9542101777777778,
+          "range": 0.7932315,
+          "closing_speed": 0.6020792,
+          "domain": 1.0
+        },
+        "rationale": [
+          "encounter geometry classified as crossing-starboard",
+          "closest point of approach is expected within 10 minutes",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "predicted CPA enters the configured own-vessel domain",
+          "dominant normalized risk component is domain (1.000)",
+          "combined score exceeds the critical threshold"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.599870210567671,
+            53.8
+          ],
+          [
+            14.606935105283837,
+            53.8
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-f69c22f254bd",
+        "timestamp": "2026-08-03T12:01:30Z",
+        "own_mmsi": 261300001,
+        "target_mmsi": 261300002,
+        "encounter_type": "overtaking",
+        "risk_level": "critical",
+        "risk_score": 0.893011,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.8,
+          "lon": 14.599870210567671
+        },
+        "target_position": {
+          "lat": 53.8,
+          "lon": 14.606935105283837
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.250523,
+          "dcpa_nm": 0.0,
+          "tcpa_min": 2.147339,
+          "relative_speed_kn": 7.0,
+          "closing_speed_kn": 7.0,
+          "converging": true,
+          "relative_bearing_deg": 0.0,
+          "cpa_east_nm": 0.0,
+          "cpa_north_nm": -0.0
+        },
+        "domain": {
+          "forward_nm": 0.332649,
+          "aft_nm": 0.080994,
+          "lateral_nm": 0.080994,
+          "normalized_distance": 0.0,
+          "violated": true
+        },
+        "colreg": {
+          "rule": "Rule 13",
+          "own_role": "give-way",
+          "target_role": "stand-on",
+          "explanation": "Own vessel is approaching from abaft the target's beam."
+        },
+        "components": {
+          "dcpa": 1.0,
+          "tcpa": 0.9522813555555556,
+          "range": 0.8747385,
+          "closing_speed": 0.35,
+          "domain": 1.0
+        },
+        "rationale": [
+          "encounter geometry classified as overtaking",
+          "closest point of approach is expected within 10 minutes",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "predicted CPA enters the configured own-vessel domain",
+          "dominant normalized risk component is dcpa (1.000)",
+          "combined score exceeds the critical threshold"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.599311606994569,
+            53.4
+          ],
+          [
+            14.61068839300543,
+            53.4
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-9d95e2c6177f",
+        "timestamp": "2026-08-03T12:02:00Z",
+        "own_mmsi": 261100001,
+        "target_mmsi": 261100002,
+        "encounter_type": "head-on",
+        "risk_level": "critical",
+        "risk_score": 0.964975,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.4,
+          "lon": 14.599311606994569
+        },
+        "target_position": {
+          "lat": 53.4,
+          "lon": 14.61068839300543
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.407262,
+          "dcpa_nm": 0.0,
+          "tcpa_min": 1.221785,
+          "relative_speed_kn": 20.0,
+          "closing_speed_kn": 20.0,
+          "converging": true,
+          "relative_bearing_deg": 0.0,
+          "cpa_east_nm": 0.0,
+          "cpa_north_nm": -0.0
+        },
+        "domain": {
+          "forward_nm": 0.385709,
+          "aft_nm": 0.113391,
+          "lateral_nm": 0.113391,
+          "normalized_distance": 0.0,
+          "violated": true
+        },
+        "colreg": {
+          "rule": "Rule 14",
+          "own_role": "mutual-action",
+          "target_role": "mutual-action",
+          "explanation": "Head-on context; both vessels require coordinated compliance monitoring."
+        },
+        "components": {
+          "dcpa": 1.0,
+          "tcpa": 0.9728492222222223,
+          "range": 0.796369,
+          "closing_speed": 1.0,
+          "domain": 1.0
+        },
+        "rationale": [
+          "encounter geometry classified as head-on",
+          "closest point of approach is expected within 10 minutes",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "predicted CPA enters the configured own-vessel domain",
+          "dominant normalized risk component is dcpa (1.000)",
+          "combined score exceeds the critical threshold"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.598420073336486,
+            53.6
+          ],
+          [
+            14.605,
+            53.59654144937286
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-a5bf98d84b8f",
+        "timestamp": "2026-08-03T12:02:00Z",
+        "own_mmsi": 261200001,
+        "target_mmsi": 261200002,
+        "encounter_type": "crossing-starboard",
+        "risk_level": "critical",
+        "risk_score": 0.921648,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.6,
+          "lon": 14.598420073336486
+        },
+        "target_position": {
+          "lat": 53.59654144937286,
+          "lon": 14.605
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.313185,
+          "dcpa_nm": 0.000556,
+          "tcpa_min": 1.560515,
+          "relative_speed_kn": 12.041595,
+          "closing_speed_kn": 12.041576,
+          "converging": true,
+          "relative_bearing_deg": 41.53179,
+          "cpa_east_nm": 0.00037,
+          "cpa_north_nm": 0.000416
+        },
+        "domain": {
+          "forward_nm": 0.312581,
+          "aft_nm": 0.089093,
+          "lateral_nm": 0.089093,
+          "normalized_distance": 0.004817,
+          "violated": true
+        },
+        "colreg": {
+          "rule": "Rule 15",
+          "own_role": "give-way",
+          "target_role": "stand-on",
+          "explanation": "Target is detected on the own vessel's starboard side."
+        },
+        "components": {
+          "dcpa": 0.998888,
+          "tcpa": 0.9653218888888889,
+          "range": 0.8434075,
+          "closing_speed": 0.6020787999999999,
+          "domain": 1.0
+        },
+        "rationale": [
+          "encounter geometry classified as crossing-starboard",
+          "closest point of approach is expected within 10 minutes",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "predicted CPA enters the configured own-vessel domain",
+          "dominant normalized risk component is domain (1.000)",
+          "combined score exceeds the critical threshold"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.603160280756896,
+            53.8
+          ],
+          [
+            14.608580140378448,
+            53.8
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-f69c22f254bd",
+        "timestamp": "2026-08-03T12:02:00Z",
+        "own_mmsi": 261300001,
+        "target_mmsi": 261300002,
+        "encounter_type": "overtaking",
+        "risk_level": "critical",
+        "risk_score": 0.899761,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.8,
+          "lon": 14.603160280756896
+        },
+        "target_position": {
+          "lat": 53.8,
+          "lon": 14.608580140378448
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.19219,
+          "dcpa_nm": 0.0,
+          "tcpa_min": 1.647339,
+          "relative_speed_kn": 7.0,
+          "closing_speed_kn": 7.0,
+          "converging": true,
+          "relative_bearing_deg": 0.0,
+          "cpa_east_nm": 0.0,
+          "cpa_north_nm": -0.0
+        },
+        "domain": {
+          "forward_nm": 0.332649,
+          "aft_nm": 0.080994,
+          "lateral_nm": 0.080994,
+          "normalized_distance": 0.0,
+          "violated": true
+        },
+        "colreg": {
+          "rule": "Rule 13",
+          "own_role": "give-way",
+          "target_role": "stand-on",
+          "explanation": "Own vessel is approaching from abaft the target's beam."
+        },
+        "components": {
+          "dcpa": 1.0,
+          "tcpa": 0.9633924666666667,
+          "range": 0.903905,
+          "closing_speed": 0.35,
+          "domain": 1.0
+        },
+        "rationale": [
+          "encounter geometry classified as overtaking",
+          "closest point of approach is expected within 10 minutes",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "predicted CPA enters the configured own-vessel domain",
+          "dominant normalized risk component is dcpa (1.000)",
+          "combined score exceeds the critical threshold"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.601639508743212,
+            53.4
+          ],
+          [
+            14.608360491256787,
+            53.4
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-9d95e2c6177f",
+        "timestamp": "2026-08-03T12:02:30Z",
+        "own_mmsi": 261100001,
+        "target_mmsi": 261100002,
+        "encounter_type": "head-on",
+        "risk_level": "critical",
+        "risk_score": 0.979309,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.4,
+          "lon": 14.601639508743212
+        },
+        "target_position": {
+          "lat": 53.4,
+          "lon": 14.608360491256787
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.240595,
+          "dcpa_nm": 0.0,
+          "tcpa_min": 0.721785,
+          "relative_speed_kn": 20.0,
+          "closing_speed_kn": 20.0,
+          "converging": true,
+          "relative_bearing_deg": 0.0,
+          "cpa_east_nm": 0.0,
+          "cpa_north_nm": -0.0
+        },
+        "domain": {
+          "forward_nm": 0.385709,
+          "aft_nm": 0.113391,
+          "lateral_nm": 0.113391,
+          "normalized_distance": 0.0,
+          "violated": true
+        },
+        "colreg": {
+          "rule": "Rule 14",
+          "own_role": "mutual-action",
+          "target_role": "mutual-action",
+          "explanation": "Head-on context; both vessels require coordinated compliance monitoring."
+        },
+        "components": {
+          "dcpa": 1.0,
+          "tcpa": 0.9839603333333333,
+          "range": 0.8797025,
+          "closing_speed": 1.0,
+          "domain": 1.0
+        },
+        "rationale": [
+          "encounter geometry classified as head-on",
+          "closest point of approach is expected within 10 minutes",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "predicted CPA enters the configured own-vessel domain",
+          "dominant normalized risk component is dcpa (1.000)",
+          "combined score exceeds the critical threshold"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.600525091670608,
+            53.6
+          ],
+          [
+            14.605,
+            53.59765181171607
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-a5bf98d84b8f",
+        "timestamp": "2026-08-03T12:02:30Z",
+        "own_mmsi": 261200001,
+        "target_mmsi": 261200002,
+        "encounter_type": "crossing-starboard",
+        "risk_level": "critical",
+        "risk_score": 0.931341,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.6,
+          "lon": 14.600525091670608
+        },
+        "target_position": {
+          "lat": 53.59765181171607,
+          "lon": 14.605
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.212835,
+          "dcpa_nm": 0.000553,
+          "tcpa_min": 1.060496,
+          "relative_speed_kn": 12.041595,
+          "closing_speed_kn": 12.041554,
+          "converging": true,
+          "relative_bearing_deg": 41.484739,
+          "cpa_east_nm": 0.000367,
+          "cpa_north_nm": 0.000413
+        },
+        "domain": {
+          "forward_nm": 0.312581,
+          "aft_nm": 0.089093,
+          "lateral_nm": 0.089093,
+          "normalized_distance": 0.004782,
+          "violated": true
+        },
+        "colreg": {
+          "rule": "Rule 15",
+          "own_role": "give-way",
+          "target_role": "stand-on",
+          "explanation": "Target is detected on the own vessel's starboard side."
+        },
+        "components": {
+          "dcpa": 0.998894,
+          "tcpa": 0.9764334222222222,
+          "range": 0.8935825,
+          "closing_speed": 0.6020776999999999,
+          "domain": 1.0
+        },
+        "rationale": [
+          "encounter geometry classified as crossing-starboard",
+          "closest point of approach is expected within 10 minutes",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "predicted CPA enters the configured own-vessel domain",
+          "dominant normalized risk component is domain (1.000)",
+          "combined score exceeds the critical threshold"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.606450350946119,
+            53.8
+          ],
+          [
+            14.61022517547306,
+            53.8
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-f69c22f254bd",
+        "timestamp": "2026-08-03T12:02:30Z",
+        "own_mmsi": 261300001,
+        "target_mmsi": 261300002,
+        "encounter_type": "overtaking",
+        "risk_level": "critical",
+        "risk_score": 0.906511,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.8,
+          "lon": 14.606450350946119
+        },
+        "target_position": {
+          "lat": 53.8,
+          "lon": 14.61022517547306
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.133856,
+          "dcpa_nm": 0.0,
+          "tcpa_min": 1.147339,
+          "relative_speed_kn": 7.0,
+          "closing_speed_kn": 7.0,
+          "converging": true,
+          "relative_bearing_deg": 0.0,
+          "cpa_east_nm": 0.0,
+          "cpa_north_nm": -0.0
+        },
+        "domain": {
+          "forward_nm": 0.332649,
+          "aft_nm": 0.080994,
+          "lateral_nm": 0.080994,
+          "normalized_distance": 0.0,
+          "violated": true
+        },
+        "colreg": {
+          "rule": "Rule 13",
+          "own_role": "give-way",
+          "target_role": "stand-on",
+          "explanation": "Own vessel is approaching from abaft the target's beam."
+        },
+        "components": {
+          "dcpa": 1.0,
+          "tcpa": 0.9745035777777777,
+          "range": 0.933072,
+          "closing_speed": 0.35,
+          "domain": 1.0
+        },
+        "rationale": [
+          "encounter geometry classified as overtaking",
+          "closest point of approach is expected within 10 minutes",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "predicted CPA enters the configured own-vessel domain",
+          "dominant normalized risk component is dcpa (1.000)",
+          "combined score exceeds the critical threshold"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.603967410491853,
+            53.4
+          ],
+          [
+            14.606032589508146,
+            53.4
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-9d95e2c6177f",
+        "timestamp": "2026-08-03T12:03:00Z",
+        "own_mmsi": 261100001,
+        "target_mmsi": 261100002,
+        "encounter_type": "head-on",
+        "risk_level": "critical",
+        "risk_score": 0.993642,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.4,
+          "lon": 14.603967410491853
+        },
+        "target_position": {
+          "lat": 53.4,
+          "lon": 14.606032589508146
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.073928,
+          "dcpa_nm": 0.0,
+          "tcpa_min": 0.221785,
+          "relative_speed_kn": 20.0,
+          "closing_speed_kn": 20.0,
+          "converging": true,
+          "relative_bearing_deg": 0.0,
+          "cpa_east_nm": 0.0,
+          "cpa_north_nm": -0.0
+        },
+        "domain": {
+          "forward_nm": 0.385709,
+          "aft_nm": 0.113391,
+          "lateral_nm": 0.113391,
+          "normalized_distance": 0.0,
+          "violated": true
+        },
+        "colreg": {
+          "rule": "Rule 14",
+          "own_role": "mutual-action",
+          "target_role": "mutual-action",
+          "explanation": "Head-on context; both vessels require coordinated compliance monitoring."
+        },
+        "components": {
+          "dcpa": 1.0,
+          "tcpa": 0.9950714444444444,
+          "range": 0.963036,
+          "closing_speed": 1.0,
+          "domain": 1.0
+        },
+        "rationale": [
+          "encounter geometry classified as head-on",
+          "closest point of approach is expected within 10 minutes",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "predicted CPA enters the configured own-vessel domain",
+          "dominant normalized risk component is dcpa (1.000)",
+          "combined score exceeds the critical threshold"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.602630110004728,
+            53.6
+          ],
+          [
+            14.605,
+            53.59876217405928
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-a5bf98d84b8f",
+        "timestamp": "2026-08-03T12:03:00Z",
+        "own_mmsi": 261200001,
+        "target_mmsi": 261200002,
+        "encounter_type": "crossing-starboard",
+        "risk_level": "critical",
+        "risk_score": 0.941033,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.6,
+          "lon": 14.602630110004728
+        },
+        "target_position": {
+          "lat": 53.59876217405928,
+          "lon": 14.605
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.112487,
+          "dcpa_nm": 0.000551,
+          "tcpa_min": 0.560484,
+          "relative_speed_kn": 12.041595,
+          "closing_speed_kn": 12.04145,
+          "converging": true,
+          "relative_bearing_deg": 41.353077,
+          "cpa_east_nm": 0.000366,
+          "cpa_north_nm": 0.000412
+        },
+        "domain": {
+          "forward_nm": 0.312581,
+          "aft_nm": 0.089093,
+          "lateral_nm": 0.089093,
+          "normalized_distance": 0.00477,
+          "violated": true
+        },
+        "colreg": {
+          "rule": "Rule 15",
+          "own_role": "give-way",
+          "target_role": "stand-on",
+          "explanation": "Target is detected on the own vessel's starboard side."
+        },
+        "components": {
+          "dcpa": 0.998898,
+          "tcpa": 0.9875448,
+          "range": 0.9437565,
+          "closing_speed": 0.6020725,
+          "domain": 1.0
+        },
+        "rationale": [
+          "encounter geometry classified as crossing-starboard",
+          "closest point of approach is expected within 10 minutes",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "predicted CPA enters the configured own-vessel domain",
+          "dominant normalized risk component is domain (1.000)",
+          "combined score exceeds the critical threshold"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.609740421135344,
+            53.8
+          ],
+          [
+            14.611870210567671,
+            53.8
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-f69c22f254bd",
+        "timestamp": "2026-08-03T12:03:00Z",
+        "own_mmsi": 261300001,
+        "target_mmsi": 261300002,
+        "encounter_type": "overtaking",
+        "risk_level": "critical",
+        "risk_score": 0.913261,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.8,
+          "lon": 14.609740421135344
+        },
+        "target_position": {
+          "lat": 53.8,
+          "lon": 14.611870210567671
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.075523,
+          "dcpa_nm": 0.0,
+          "tcpa_min": 0.647339,
+          "relative_speed_kn": 7.0,
+          "closing_speed_kn": 7.0,
+          "converging": true,
+          "relative_bearing_deg": 0.0,
+          "cpa_east_nm": 0.0,
+          "cpa_north_nm": -0.0
+        },
+        "domain": {
+          "forward_nm": 0.332649,
+          "aft_nm": 0.080994,
+          "lateral_nm": 0.080994,
+          "normalized_distance": 0.0,
+          "violated": true
+        },
+        "colreg": {
+          "rule": "Rule 13",
+          "own_role": "give-way",
+          "target_role": "stand-on",
+          "explanation": "Own vessel is approaching from abaft the target's beam."
+        },
+        "components": {
+          "dcpa": 1.0,
+          "tcpa": 0.9856146888888889,
+          "range": 0.9622385,
+          "closing_speed": 0.35,
+          "domain": 1.0
+        },
+        "rationale": [
+          "encounter geometry classified as overtaking",
+          "closest point of approach is expected within 10 minutes",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "predicted CPA enters the configured own-vessel domain",
+          "dominant normalized risk component is dcpa (1.000)",
+          "combined score exceeds the critical threshold"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.606295312240496,
+            53.4
+          ],
+          [
+            14.603704687759503,
+            53.4
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-9d95e2c6177f",
+        "timestamp": "2026-08-03T12:03:30Z",
+        "own_mmsi": 261100001,
+        "target_mmsi": 261100002,
+        "encounter_type": "diverging",
+        "risk_level": "warning",
+        "risk_score": 0.574156,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.4,
+          "lon": 14.606295312240496
+        },
+        "target_position": {
+          "lat": 53.4,
+          "lon": 14.603704687759503
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.092738,
+          "dcpa_nm": 0.092738,
+          "tcpa_min": 0.0,
+          "relative_speed_kn": 20.0,
+          "closing_speed_kn": 0.0,
+          "converging": false,
+          "relative_bearing_deg": -180.0,
+          "cpa_east_nm": -0.092738,
+          "cpa_north_nm": 0.0
+        },
+        "domain": {
+          "forward_nm": 0.385709,
+          "aft_nm": 0.113391,
+          "lateral_nm": 0.113391,
+          "normalized_distance": 0.817861,
+          "violated": true
+        },
+        "colreg": {
+          "rule": null,
+          "own_role": "monitor",
+          "target_role": "monitor",
+          "explanation": "No specific Rules 13-17 encounter class was assigned."
+        },
+        "components": {
+          "dcpa": 0.814524,
+          "tcpa": 0.0,
+          "range": 0.953631,
+          "closing_speed": 0.0,
+          "domain": 1.0
+        },
+        "rationale": [
+          "encounter geometry classified as diverging",
+          "relative motion is not converging",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "predicted CPA enters the configured own-vessel domain",
+          "dominant normalized risk component is domain (1.000)",
+          "combined score exceeds the warning threshold"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.60473512833885,
+            53.6
+          ],
+          [
+            14.605,
+            53.59987253640249
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-a5bf98d84b8f",
+        "timestamp": "2026-08-03T12:03:30Z",
+        "own_mmsi": 261200001,
+        "target_mmsi": 261200002,
+        "encounter_type": "crossing-starboard",
+        "risk_level": "critical",
+        "risk_score": 0.950651,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.6,
+          "lon": 14.60473512833885
+        },
+        "target_position": {
+          "lat": 53.59987253640249,
+          "lon": 14.605
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.01215,
+          "dcpa_nm": 0.00055,
+          "tcpa_min": 0.060479,
+          "relative_speed_kn": 12.041595,
+          "closing_speed_kn": 12.02926,
+          "converging": true,
+          "relative_bearing_deg": 39.039974,
+          "cpa_east_nm": 0.000365,
+          "cpa_north_nm": 0.000411
+        },
+        "domain": {
+          "forward_nm": 0.312581,
+          "aft_nm": 0.089093,
+          "lateral_nm": 0.089093,
+          "normalized_distance": 0.004759,
+          "violated": true
+        },
+        "colreg": {
+          "rule": "Rule 15",
+          "own_role": "give-way",
+          "target_role": "stand-on",
+          "explanation": "Target is detected on the own vessel's starboard side."
+        },
+        "components": {
+          "dcpa": 0.9989,
+          "tcpa": 0.9986560222222223,
+          "range": 0.993925,
+          "closing_speed": 0.6014630000000001,
+          "domain": 1.0
+        },
+        "rationale": [
+          "encounter geometry classified as crossing-starboard",
+          "closest point of approach is expected within 10 minutes",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "predicted CPA enters the configured own-vessel domain",
+          "dominant normalized risk component is domain (1.000)",
+          "combined score exceeds the critical threshold"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.613030491324567,
+            53.8
+          ],
+          [
+            14.613515245662285,
+            53.8
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-f69c22f254bd",
+        "timestamp": "2026-08-03T12:03:30Z",
+        "own_mmsi": 261300001,
+        "target_mmsi": 261300002,
+        "encounter_type": "overtaking",
+        "risk_level": "critical",
+        "risk_score": 0.920011,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.8,
+          "lon": 14.613030491324567
+        },
+        "target_position": {
+          "lat": 53.8,
+          "lon": 14.613515245662285
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.01719,
+          "dcpa_nm": 0.0,
+          "tcpa_min": 0.147339,
+          "relative_speed_kn": 7.0,
+          "closing_speed_kn": 7.0,
+          "converging": true,
+          "relative_bearing_deg": 0.0,
+          "cpa_east_nm": 0.0,
+          "cpa_north_nm": -0.0
+        },
+        "domain": {
+          "forward_nm": 0.332649,
+          "aft_nm": 0.080994,
+          "lateral_nm": 0.080994,
+          "normalized_distance": 0.0,
+          "violated": true
+        },
+        "colreg": {
+          "rule": "Rule 13",
+          "own_role": "give-way",
+          "target_role": "stand-on",
+          "explanation": "Own vessel is approaching from abaft the target's beam."
+        },
+        "components": {
+          "dcpa": 1.0,
+          "tcpa": 0.9967258,
+          "range": 0.991405,
+          "closing_speed": 0.35,
+          "domain": 1.0
+        },
+        "rationale": [
+          "encounter geometry classified as overtaking",
+          "closest point of approach is expected within 10 minutes",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "predicted CPA enters the configured own-vessel domain",
+          "dominant normalized risk component is dcpa (1.000)",
+          "combined score exceeds the critical threshold"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.608623213989137,
+            53.4
+          ],
+          [
+            14.601376786010862,
+            53.4
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-9d95e2c6177f",
+        "timestamp": "2026-08-03T12:04:00Z",
+        "own_mmsi": 261100001,
+        "target_mmsi": 261100002,
+        "encounter_type": "diverging",
+        "risk_level": "watch",
+        "risk_score": 0.31856,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.4,
+          "lon": 14.608623213989137
+        },
+        "target_position": {
+          "lat": 53.4,
+          "lon": 14.601376786010862
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.259405,
+          "dcpa_nm": 0.259405,
+          "tcpa_min": 0.0,
+          "relative_speed_kn": 20.0,
+          "closing_speed_kn": 0.0,
+          "converging": false,
+          "relative_bearing_deg": -180.0,
+          "cpa_east_nm": -0.259405,
+          "cpa_north_nm": 0.0
+        },
+        "domain": {
+          "forward_nm": 0.385709,
+          "aft_nm": 0.113391,
+          "lateral_nm": 0.113391,
+          "normalized_distance": 2.287705,
+          "violated": false
+        },
+        "colreg": {
+          "rule": null,
+          "own_role": "monitor",
+          "target_role": "monitor",
+          "explanation": "No specific Rules 13-17 encounter class was assigned."
+        },
+        "components": {
+          "dcpa": 0.48119,
+          "tcpa": 0.0,
+          "range": 0.8702975,
+          "closing_speed": 0.0,
+          "domain": 0.2374316666666667
+        },
+        "rationale": [
+          "encounter geometry classified as diverging",
+          "relative motion is not converging",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "dominant normalized risk component is range (0.870)"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.606840146672972,
+            53.6
+          ],
+          [
+            14.605,
+            53.600982898745706
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-a5bf98d84b8f",
+        "timestamp": "2026-08-03T12:04:00Z",
+        "own_mmsi": 261200001,
+        "target_mmsi": 261200002,
+        "encounter_type": "diverging",
+        "risk_level": "warning",
+        "risk_score": 0.577371,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.6,
+          "lon": 14.606840146672972
+        },
+        "target_position": {
+          "lat": 53.600982898745706,
+          "lon": 14.605
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.08821,
+          "dcpa_nm": 0.08821,
+          "tcpa_min": 0.0,
+          "relative_speed_kn": 12.041595,
+          "closing_speed_kn": 0.0,
+          "converging": false,
+          "relative_bearing_deg": -138.009014,
+          "cpa_east_nm": -0.065562,
+          "cpa_north_nm": 0.059014
+        },
+        "domain": {
+          "forward_nm": 0.312581,
+          "aft_nm": 0.089093,
+          "lateral_nm": 0.089093,
+          "normalized_distance": 0.990092,
+          "violated": true
+        },
+        "colreg": {
+          "rule": null,
+          "own_role": "monitor",
+          "target_role": "monitor",
+          "explanation": "No specific Rules 13-17 encounter class was assigned."
+        },
+        "components": {
+          "dcpa": 0.82358,
+          "tcpa": 0.0,
+          "range": 0.955895,
+          "closing_speed": 0.0,
+          "domain": 1.0
+        },
+        "rationale": [
+          "encounter geometry classified as diverging",
+          "relative motion is not converging",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "predicted CPA enters the configured own-vessel domain",
+          "dominant normalized risk component is domain (1.000)",
+          "combined score exceeds the warning threshold"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.61632056151379,
+            53.8
+          ],
+          [
+            14.615160280756896,
+            53.8
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-f69c22f254bd",
+        "timestamp": "2026-08-03T12:04:00Z",
+        "own_mmsi": 261300001,
+        "target_mmsi": 261300002,
+        "encounter_type": "diverging",
+        "risk_level": "warning",
+        "risk_score": 0.610788,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.8,
+          "lon": 14.61632056151379
+        },
+        "target_position": {
+          "lat": 53.8,
+          "lon": 14.615160280756896
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.041144,
+          "dcpa_nm": 0.041144,
+          "tcpa_min": 0.0,
+          "relative_speed_kn": 7.0,
+          "closing_speed_kn": 0.0,
+          "converging": false,
+          "relative_bearing_deg": -180.0,
+          "cpa_east_nm": -0.041144,
+          "cpa_north_nm": 0.0
+        },
+        "domain": {
+          "forward_nm": 0.332649,
+          "aft_nm": 0.080994,
+          "lateral_nm": 0.080994,
+          "normalized_distance": 0.507991,
+          "violated": true
+        },
+        "colreg": {
+          "rule": null,
+          "own_role": "monitor",
+          "target_role": "monitor",
+          "explanation": "No specific Rules 13-17 encounter class was assigned."
+        },
+        "components": {
+          "dcpa": 0.917712,
+          "tcpa": 0.0,
+          "range": 0.979428,
+          "closing_speed": 0.0,
+          "domain": 1.0
+        },
+        "rationale": [
+          "encounter geometry classified as diverging",
+          "relative motion is not converging",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "predicted CPA enters the configured own-vessel domain",
+          "dominant normalized risk component is domain (1.000)",
+          "combined score exceeds the warning threshold"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.61095111573778,
+            53.4
+          ],
+          [
+            14.599048884262219,
+            53.4
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-9d95e2c6177f",
+        "timestamp": "2026-08-03T12:04:30Z",
+        "own_mmsi": 261100001,
+        "target_mmsi": 261100002,
+        "encounter_type": "diverging",
+        "risk_level": "safe",
+        "risk_score": 0.157489,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.4,
+          "lon": 14.61095111573778
+        },
+        "target_position": {
+          "lat": 53.4,
+          "lon": 14.599048884262219
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.426072,
+          "dcpa_nm": 0.426072,
+          "tcpa_min": 0.0,
+          "relative_speed_kn": 20.0,
+          "closing_speed_kn": 0.0,
+          "converging": false,
+          "relative_bearing_deg": -180.0,
+          "cpa_east_nm": -0.426072,
+          "cpa_north_nm": 0.0
+        },
+        "domain": {
+          "forward_nm": 0.385709,
+          "aft_nm": 0.113391,
+          "lateral_nm": 0.113391,
+          "normalized_distance": 3.757549,
+          "violated": false
+        },
+        "colreg": {
+          "rule": null,
+          "own_role": "monitor",
+          "target_role": "monitor",
+          "explanation": "No specific Rules 13-17 encounter class was assigned."
+        },
+        "components": {
+          "dcpa": 0.147856,
+          "tcpa": 0.0,
+          "range": 0.786964,
+          "closing_speed": 0.0,
+          "domain": 0.0
+        },
+        "rationale": [
+          "encounter geometry classified as diverging",
+          "relative motion is not converging",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "dominant normalized risk component is range (0.787)"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.608945165007093,
+            53.6
+          ],
+          [
+            14.605,
+            53.60209326108892
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-a5bf98d84b8f",
+        "timestamp": "2026-08-03T12:04:30Z",
+        "own_mmsi": 261200001,
+        "target_mmsi": 261200002,
+        "encounter_type": "diverging",
+        "risk_level": "watch",
+        "risk_score": 0.379145,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.6,
+          "lon": 14.608945165007093
+        },
+        "target_position": {
+          "lat": 53.60209326108892,
+          "lon": 14.605
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.188554,
+          "dcpa_nm": 0.188554,
+          "tcpa_min": 0.0,
+          "relative_speed_kn": 12.041595,
+          "closing_speed_kn": 0.0,
+          "converging": false,
+          "relative_bearing_deg": -138.19869,
+          "cpa_east_nm": -0.140559,
+          "cpa_north_nm": 0.12568
+        },
+        "domain": {
+          "forward_nm": 0.312581,
+          "aft_nm": 0.089093,
+          "lateral_nm": 0.089093,
+          "normalized_distance": 2.116366,
+          "violated": false
+        },
+        "colreg": {
+          "rule": null,
+          "own_role": "monitor",
+          "target_role": "monitor",
+          "explanation": "No specific Rules 13-17 encounter class was assigned."
+        },
+        "components": {
+          "dcpa": 0.622892,
+          "tcpa": 0.0,
+          "range": 0.9057230000000001,
+          "closing_speed": 0.0,
+          "domain": 0.29454466666666657
+        },
+        "rationale": [
+          "encounter geometry classified as diverging",
+          "relative motion is not converging",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "dominant normalized risk component is range (0.906)"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.619610631703015,
+            53.8
+          ],
+          [
+            14.616805315851508,
+            53.8
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-f69c22f254bd",
+        "timestamp": "2026-08-03T12:04:30Z",
+        "own_mmsi": 261300001,
+        "target_mmsi": 261300002,
+        "encounter_type": "diverging",
+        "risk_level": "watch",
+        "risk_score": 0.495679,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.8,
+          "lon": 14.619610631703015
+        },
+        "target_position": {
+          "lat": 53.8,
+          "lon": 14.616805315851508
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.099477,
+          "dcpa_nm": 0.099477,
+          "tcpa_min": 0.0,
+          "relative_speed_kn": 7.0,
+          "closing_speed_kn": 0.0,
+          "converging": false,
+          "relative_bearing_deg": -180.0,
+          "cpa_east_nm": -0.099477,
+          "cpa_north_nm": 0.0
+        },
+        "domain": {
+          "forward_nm": 0.332649,
+          "aft_nm": 0.080994,
+          "lateral_nm": 0.080994,
+          "normalized_distance": 1.228209,
+          "violated": false
+        },
+        "colreg": {
+          "rule": null,
+          "own_role": "monitor",
+          "target_role": "monitor",
+          "explanation": "No specific Rules 13-17 encounter class was assigned."
+        },
+        "components": {
+          "dcpa": 0.801046,
+          "tcpa": 0.0,
+          "range": 0.9502615,
+          "closing_speed": 0.0,
+          "domain": 0.590597
+        },
+        "rationale": [
+          "encounter geometry classified as diverging",
+          "relative motion is not converging",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "dominant normalized risk component is range (0.950)"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.613279017486422,
+            53.4
+          ],
+          [
+            14.596720982513578,
+            53.4
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-9d95e2c6177f",
+        "timestamp": "2026-08-03T12:05:00Z",
+        "own_mmsi": 261100001,
+        "target_mmsi": 261100002,
+        "encounter_type": "diverging",
+        "risk_level": "safe",
+        "risk_score": 0.098508,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.4,
+          "lon": 14.613279017486422
+        },
+        "target_position": {
+          "lat": 53.4,
+          "lon": 14.596720982513578
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.592738,
+          "dcpa_nm": 0.592738,
+          "tcpa_min": 0.0,
+          "relative_speed_kn": 20.0,
+          "closing_speed_kn": 0.0,
+          "converging": false,
+          "relative_bearing_deg": -180.0,
+          "cpa_east_nm": -0.592738,
+          "cpa_north_nm": 0.0
+        },
+        "domain": {
+          "forward_nm": 0.385709,
+          "aft_nm": 0.113391,
+          "lateral_nm": 0.113391,
+          "normalized_distance": 5.227385,
+          "violated": false
+        },
+        "colreg": {
+          "rule": null,
+          "own_role": "monitor",
+          "target_role": "monitor",
+          "explanation": "No specific Rules 13-17 encounter class was assigned."
+        },
+        "components": {
+          "dcpa": 0.0,
+          "tcpa": 0.0,
+          "range": 0.703631,
+          "closing_speed": 0.0,
+          "domain": 0.0
+        },
+        "rationale": [
+          "encounter geometry classified as diverging",
+          "relative motion is not converging",
+          "current separation is below 1 nautical mile",
+          "dominant normalized risk component is range (0.704)"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.611050183341215,
+            53.6
+          ],
+          [
+            14.605,
+            53.60320362343214
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-a5bf98d84b8f",
+        "timestamp": "2026-08-03T12:05:00Z",
+        "own_mmsi": 261200001,
+        "target_mmsi": 261200002,
+        "encounter_type": "diverging",
+        "risk_level": "watch",
+        "risk_score": 0.254883,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.6,
+          "lon": 14.611050183341215
+        },
+        "target_position": {
+          "lat": 53.60320362343214,
+          "lon": 14.605
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.288897,
+          "dcpa_nm": 0.288897,
+          "tcpa_min": 0.0,
+          "relative_speed_kn": 12.041595,
+          "closing_speed_kn": 0.0,
+          "converging": false,
+          "relative_bearing_deg": -138.256344,
+          "cpa_east_nm": -0.215555,
+          "cpa_north_nm": 0.192347
+        },
+        "domain": {
+          "forward_nm": 0.312581,
+          "aft_nm": 0.089093,
+          "lateral_nm": 0.089093,
+          "normalized_distance": 3.242647,
+          "violated": false
+        },
+        "colreg": {
+          "rule": null,
+          "own_role": "monitor",
+          "target_role": "monitor",
+          "explanation": "No specific Rules 13-17 encounter class was assigned."
+        },
+        "components": {
+          "dcpa": 0.42220599999999997,
+          "tcpa": 0.0,
+          "range": 0.8555515,
+          "closing_speed": 0.0,
+          "domain": 0.0
+        },
+        "rationale": [
+          "encounter geometry classified as diverging",
+          "relative motion is not converging",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "dominant normalized risk component is range (0.856)"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.622900701892238,
+            53.8
+          ],
+          [
+            14.61845035094612,
+            53.8
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-f69c22f254bd",
+        "timestamp": "2026-08-03T12:05:00Z",
+        "own_mmsi": 261300001,
+        "target_mmsi": 261300002,
+        "encounter_type": "diverging",
+        "risk_level": "watch",
+        "risk_score": 0.411049,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.8,
+          "lon": 14.622900701892238
+        },
+        "target_position": {
+          "lat": 53.8,
+          "lon": 14.61845035094612
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.15781,
+          "dcpa_nm": 0.15781,
+          "tcpa_min": 0.0,
+          "relative_speed_kn": 7.0,
+          "closing_speed_kn": 0.0,
+          "converging": false,
+          "relative_bearing_deg": -180.0,
+          "cpa_east_nm": -0.15781,
+          "cpa_north_nm": 0.0
+        },
+        "domain": {
+          "forward_nm": 0.332649,
+          "aft_nm": 0.080994,
+          "lateral_nm": 0.080994,
+          "normalized_distance": 1.948427,
+          "violated": false
+        },
+        "colreg": {
+          "rule": null,
+          "own_role": "monitor",
+          "target_role": "monitor",
+          "explanation": "No specific Rules 13-17 encounter class was assigned."
+        },
+        "components": {
+          "dcpa": 0.68438,
+          "tcpa": 0.0,
+          "range": 0.921095,
+          "closing_speed": 0.0,
+          "domain": 0.3505243333333333
+        },
+        "rationale": [
+          "encounter geometry classified as diverging",
+          "relative motion is not converging",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "dominant normalized risk component is range (0.921)"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.615606919235065,
+            53.4
+          ],
+          [
+            14.594393080764934,
+            53.4
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-9d95e2c6177f",
+        "timestamp": "2026-08-03T12:05:30Z",
+        "own_mmsi": 261100001,
+        "target_mmsi": 261100002,
+        "encounter_type": "diverging",
+        "risk_level": "safe",
+        "risk_score": 0.086842,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.4,
+          "lon": 14.615606919235065
+        },
+        "target_position": {
+          "lat": 53.4,
+          "lon": 14.594393080764934
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.759405,
+          "dcpa_nm": 0.759405,
+          "tcpa_min": 0.0,
+          "relative_speed_kn": 20.0,
+          "closing_speed_kn": 0.0,
+          "converging": false,
+          "relative_bearing_deg": -180.0,
+          "cpa_east_nm": -0.759405,
+          "cpa_north_nm": 0.0
+        },
+        "domain": {
+          "forward_nm": 0.385709,
+          "aft_nm": 0.113391,
+          "lateral_nm": 0.113391,
+          "normalized_distance": 6.697229,
+          "violated": false
+        },
+        "colreg": {
+          "rule": null,
+          "own_role": "monitor",
+          "target_role": "monitor",
+          "explanation": "No specific Rules 13-17 encounter class was assigned."
+        },
+        "components": {
+          "dcpa": 0.0,
+          "tcpa": 0.0,
+          "range": 0.6202975,
+          "closing_speed": 0.0,
+          "domain": 0.0
+        },
+        "rationale": [
+          "encounter geometry classified as diverging",
+          "relative motion is not converging",
+          "current separation is below 1 nautical mile",
+          "dominant normalized risk component is range (0.620)"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.613155201675337,
+            53.6
+          ],
+          [
+            14.605,
+            53.60431398577535
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-a5bf98d84b8f",
+        "timestamp": "2026-08-03T12:05:30Z",
+        "own_mmsi": 261200001,
+        "target_mmsi": 261200002,
+        "encounter_type": "diverging",
+        "risk_level": "safe",
+        "risk_score": 0.183641,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.6,
+          "lon": 14.613155201675337
+        },
+        "target_position": {
+          "lat": 53.60431398577535,
+          "lon": 14.605
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.389238,
+          "dcpa_nm": 0.389238,
+          "tcpa_min": 0.0,
+          "relative_speed_kn": 12.041595,
+          "closing_speed_kn": 0.0,
+          "converging": false,
+          "relative_bearing_deg": -138.284079,
+          "cpa_east_nm": -0.290548,
+          "cpa_north_nm": 0.259014
+        },
+        "domain": {
+          "forward_nm": 0.312581,
+          "aft_nm": 0.089093,
+          "lateral_nm": 0.089093,
+          "normalized_distance": 4.368904,
+          "violated": false
+        },
+        "colreg": {
+          "rule": null,
+          "own_role": "monitor",
+          "target_role": "monitor",
+          "explanation": "No specific Rules 13-17 encounter class was assigned."
+        },
+        "components": {
+          "dcpa": 0.22152400000000005,
+          "tcpa": 0.0,
+          "range": 0.805381,
+          "closing_speed": 0.0,
+          "domain": 0.0
+        },
+        "rationale": [
+          "encounter geometry classified as diverging",
+          "relative motion is not converging",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "dominant normalized risk component is range (0.805)"
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            14.626190772081463,
+            53.8
+          ],
+          [
+            14.620095386040731,
+            53.8
+          ]
+        ]
+      },
+      "properties": {
+        "encounter_id": "enc-f69c22f254bd",
+        "timestamp": "2026-08-03T12:05:30Z",
+        "own_mmsi": 261300001,
+        "target_mmsi": 261300002,
+        "encounter_type": "diverging",
+        "risk_level": "watch",
+        "risk_score": 0.326418,
+        "confidence": 1.0,
+        "own_position": {
+          "lat": 53.8,
+          "lon": 14.626190772081463
+        },
+        "target_position": {
+          "lat": 53.8,
+          "lon": 14.620095386040731
+        },
+        "relative_motion": {
+          "current_distance_nm": 0.216144,
+          "dcpa_nm": 0.216144,
+          "tcpa_min": 0.0,
+          "relative_speed_kn": 7.0,
+          "closing_speed_kn": 0.0,
+          "converging": false,
+          "relative_bearing_deg": -180.0,
+          "cpa_east_nm": -0.216144,
+          "cpa_north_nm": 0.0
+        },
+        "domain": {
+          "forward_nm": 0.332649,
+          "aft_nm": 0.080994,
+          "lateral_nm": 0.080994,
+          "normalized_distance": 2.668658,
+          "violated": false
+        },
+        "colreg": {
+          "rule": null,
+          "own_role": "monitor",
+          "target_role": "monitor",
+          "explanation": "No specific Rules 13-17 encounter class was assigned."
+        },
+        "components": {
+          "dcpa": 0.567712,
+          "tcpa": 0.0,
+          "range": 0.891928,
+          "closing_speed": 0.0,
+          "domain": 0.11044733333333323
+        },
+        "rationale": [
+          "encounter geometry classified as diverging",
+          "relative motion is not converging",
+          "predicted closest passing distance is below 0.5 nautical miles",
+          "current separation is below 1 nautical mile",
+          "dominant normalized risk component is range (0.892)"
+        ]
+      }
+    }
+  ]
+}

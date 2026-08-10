@@ -1,0 +1,73 @@
+{
+  "input_rows": 72,
+  "unique_vessels": 6,
+  "assessments": 36,
+  "emitted_alerts": 6,
+  "near_misses": 3,
+  "maximum_risk_score": 0.993642,
+  "scenarios": [
+    {
+      "name": "head-on",
+      "own_mmsi": 261100001,
+      "target_mmsi": 261100002,
+      "expected_encounter": "head-on",
+      "expected_colreg_rule": "Rule 14",
+      "assessment_count": 12,
+      "converging_assessments": 7,
+      "expected_type_count": 7,
+      "classification_consistency": 1.0,
+      "observed_encounter_types": [
+        "diverging",
+        "head-on"
+      ],
+      "peak_risk_score": 0.993642,
+      "minimum_dcpa_nm": 0.0,
+      "minimum_converging_tcpa_min": 0.221785,
+      "emitted_alerts": 2,
+      "first_emitted_state": "critical",
+      "near_miss_detected": true
+    },
+    {
+      "name": "crossing",
+      "own_mmsi": 261200001,
+      "target_mmsi": 261200002,
+      "expected_encounter": "crossing-starboard",
+      "expected_colreg_rule": "Rule 15",
+      "assessment_count": 12,
+      "converging_assessments": 8,
+      "expected_type_count": 8,
+      "classification_consistency": 1.0,
+      "observed_encounter_types": [
+        "crossing-starboard",
+        "diverging"
+      ],
+      "peak_risk_score": 0.950651,
+      "minimum_dcpa_nm": 0.00055,
+      "minimum_converging_tcpa_min": 0.060479,
+      "emitted_alerts": 2,
+      "first_emitted_state": "critical",
+      "near_miss_detected": true
+    },
+    {
+      "name": "overtaking",
+      "own_mmsi": 261300001,
+      "target_mmsi": 261300002,
+      "expected_encounter": "overtaking",
+      "expected_colreg_rule": "Rule 13",
+      "assessment_count": 12,
+      "converging_assessments": 8,
+      "expected_type_count": 8,
+      "classification_consistency": 1.0,
+      "observed_encounter_types": [
+        "diverging",
+        "overtaking"
+      ],
+      "peak_risk_score": 0.920011,
+      "minimum_dcpa_nm": 0.0,
+      "minimum_converging_tcpa_min": 0.147339,
+      "emitted_alerts": 2,
+      "first_emitted_state": "critical",
+      "near_miss_detected": true
+    }
+  ]
+}

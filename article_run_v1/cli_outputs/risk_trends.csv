@@ -1,0 +1,4 @@
+encounter_id,trend,slope_per_min,score_delta,observation_count
+enc-9d95e2c6177f,decreasing,-0.183289,-0.8208,12
+enc-a5bf98d84b8f,decreasing,-0.130549,-0.699223,12
+enc-f69c22f254bd,decreasing,-0.100025,-0.546343,12

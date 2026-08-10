@@ -1,0 +1,217 @@
+Metadata-Version: 2.4
+Name: portguard-ais
+Version: 1.0.0
+Summary: Explainable collision-risk alerts and vessel-encounter analytics for restricted port waters.
+Author: Irmina Durlik, Tymoteusz Miller
+License: MIT License
+        
+        Copyright (c) 2026 Irmina Durlik and Tymoteusz Miller
+        
+        Permission is hereby granted, free of charge, to any person obtaining a copy
+        of this software and associated documentation files (the "Software"), to deal
+        in the Software without restriction, including without limitation the rights
+        to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+        copies of the Software, and to permit persons to whom the Software is
+        furnished to do so, subject to the following conditions:
+        
+        The above copyright notice and this permission notice shall be included in all
+        copies or substantial portions of the Software.
+        
+        THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+        IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+        FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+        AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+        LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+        OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+        SOFTWARE.
+        
+Project-URL: Documentation, https://github.com/OWNER/PortGuard-AIS#readme
+Project-URL: Issues, https://github.com/OWNER/PortGuard-AIS/issues
+Project-URL: Source, https://github.com/OWNER/PortGuard-AIS
+Keywords: AIS,maritime safety,collision risk,COLREG,near miss
+Classifier: Development Status :: 5 - Production/Stable
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.13
+Classifier: Topic :: Scientific/Engineering :: Information Analysis
+Requires-Python: >=3.13
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy>=2.1
+Requires-Dist: pandas>=2.2
+Requires-Dist: pydantic>=2.10
+Requires-Dist: rich>=13.9
+Requires-Dist: typer>=0.15
+Provides-Extra: viz
+Requires-Dist: matplotlib>=3.9; extra == "viz"
+Provides-Extra: dev
+Requires-Dist: build>=1.2; extra == "dev"
+Requires-Dist: hypothesis>=6.120; extra == "dev"
+Requires-Dist: mkdocs>=1.6; extra == "dev"
+Requires-Dist: mkdocs-material>=9.6; extra == "dev"
+Requires-Dist: mypy>=2.3; extra == "dev"
+Requires-Dist: pandas-stubs>=2.2; extra == "dev"
+Requires-Dist: pip-audit>=2.8; extra == "dev"
+Requires-Dist: pre-commit>=4.1; extra == "dev"
+Requires-Dist: pytest>=9.0; extra == "dev"
+Requires-Dist: pytest-cov>=6.0; extra == "dev"
+Requires-Dist: ruff>=0.16; extra == "dev"
+Dynamic: license-file
+
+# PortGuard-AIS
+
+[![Python 3.13+](https://img.shields.io/badge/python-3.13%2B-blue.svg)](https://www.python.org/)
+[![Ruff](https://img.shields.io/badge/code%20style-ruff-261230.svg)](https://docs.astral.sh/ruff/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+**PortGuard-AIS** is a modular Python 3.13 framework for explainable collision-risk
+assessment, vessel-encounter classification, near-miss mining, and stateful alerts from AIS data.
+It is intended for restricted port waters, approaches, anchorages, and other traffic-dense areas.
+
+## Scientific scope
+
+PortGuard-AIS answers four operational questions:
+
+1. Which vessel pairs are on potentially conflicting motion vectors?
+2. What encounter geometry is present and what COLREG context applies?
+3. How severe and how immediate is the risk?
+4. Why was an alert emitted, suppressed, escalated, or resolved?
+
+The project deliberately **does not design fairways, generate routes, optimize waterways,
+create waypoints, or prescribe autonomous avoidance trajectories**.
+
+## Features
+
+- validated AIS input model, configurable cleaning and kinematic anomaly detection;
+- snapshot and historical processing;
+- pairwise spatial pre-filtering;
+- CPA/TCPA and relative-motion geometry;
+- head-on, crossing, overtaking, being-overtaken, parallel and indeterminate classes;
+- rule-context mapping for COLREG Rules 13–17;
+- speed- and length-aware elliptical vessel domain;
+- transparent multi-component collision-risk score;
+- alert lifecycle with hysteresis, persistence, cooldown and deduplication;
+- explicit machine-readable rationale for every assessment;
+- historical near-miss event mining, risk trends and spatial hotspot aggregation;
+- CSV, JSON, GeoJSON and standalone HTML reporting;
+- Typer CLI, MkDocs documentation, strict mypy, Ruff, pytest and GitHub Actions.
+
+## Installation
+
+```bash
+python3.13 -m venv .venv
+source .venv/bin/activate
+python -m pip install -e ".[viz]"
+```
+
+For development:
+
+```bash
+python -m pip install -e ".[dev,viz]"
+pre-commit install
+make quality
+```
+
+Using `uv`:
+
+```bash
+uv sync --all-extras
+uv run portguard-ais validate examples/data/sample_ais.csv
+uv run portguard-ais assess examples/data/sample_ais.csv --output-dir outputs
+```
+
+## Python API
+
+```python
+from portguard_ais.config import PortGuardConfig
+from portguard_ais.pipeline import PortGuardPipeline
+
+pipeline = PortGuardPipeline(PortGuardConfig())
+result = pipeline.process_csv("examples/data/sample_ais.csv")
+
+print(result.assessments[0].model_dump(mode="json"))
+```
+
+## CLI
+
+```bash
+portguard-ais validate INPUT.csv
+portguard-ais assess INPUT.csv --output-dir outputs
+portguard-ais near-misses INPUT.csv --output outputs/near_misses.csv
+portguard-ais synthetic --output examples/data/generated_scenarios.csv
+portguard-ais benchmark --steps 12
+```
+
+## Input schema
+
+Required columns:
+
+| Column | Meaning | Unit |
+|---|---|---|
+| `timestamp` | timezone-aware observation time | ISO 8601 |
+| `mmsi` | Maritime Mobile Service Identity | integer |
+| `lat` | latitude | decimal degrees |
+| `lon` | longitude | decimal degrees |
+| `sog` | speed over ground | knots |
+| `cog` | course over ground | degrees, true |
+
+Optional columns include `heading`, `rot`, `length_m`, `beam_m`, `vessel_type`,
+`position_accuracy_m`, and `source`.
+
+## Repository quality gates
+
+```bash
+make format-check
+make lint
+make typecheck
+make test
+make audit
+make build
+```
+
+## Safety notice
+
+PortGuard-AIS is research and decision-support software. It is not certified navigational
+equipment and must not replace COLREG-compliant watchkeeping, VTS procedures, bridge systems,
+or the judgement of qualified maritime personnel.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
+
+## SoftwareX reproducibility suite
+
+The publication-oriented benchmark is intentionally separate from the legacy four-vessel
+regression dataset. It contains three spatially isolated and physically consistent encounter
+pairs so that each expected geometry can be evaluated without cross-scenario pairing:
+
+- `head-on` - reciprocal courses, COLREG Rule 14 context;
+- `crossing` - target on the own vessel's starboard side, Rule 15 context;
+- `overtaking` - faster own vessel approaching from abaft the target's beam, Rule 13 context.
+
+Generate the dataset and compact benchmark directly from the CLI:
+
+```bash
+portguard-ais article-data --steps 12 --interval-seconds 30 --output article_scenarios.csv
+portguard-ais article-benchmark --steps 12 --interval-seconds 30
+```
+
+Generate the complete SoftwareX evidence pack, including CSV/JSON/GeoJSON exports, the HTML
+report, manuscript-ready scenario table, encounter figures and the stateful risk timeline:
+
+```bash
+python examples/softwarex_article_run.py
+```
+
+For a clean development environment that also executes Ruff, strict mypy, pytest, package build
+and dependency audit, use:
+
+```bash
+bash scripts/run_softwarex_article.sh
+```
+
+The reference run is written to `article_run_v1/`. Classification consistency reported by this
+suite is a deterministic regression check against controlled scenario geometry; it is **not** a
+claim of real-world classifier accuracy.

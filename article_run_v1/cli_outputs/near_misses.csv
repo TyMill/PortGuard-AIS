@@ -1,0 +1,4 @@
+encounter_id,own_mmsi,target_mmsi,started_at,ended_at,observation_count,peak_risk_score,minimum_dcpa_nm,minimum_tcpa_min,encounter_types,severity_rank
+enc-9d95e2c6177f,261100001,261100002,2026-08-03T12:00:00Z,2026-08-03T12:05:30Z,12,0.993642,0.0,0.221785,"['head-on', 'diverging']",0.996185
+enc-a5bf98d84b8f,261200001,261200002,2026-08-03T12:00:00Z,2026-08-03T12:05:30Z,12,0.950651,0.00055,0.060479,"['crossing-starboard', 'diverging']",0.970061
+enc-f69c22f254bd,261300001,261300002,2026-08-03T12:00:00Z,2026-08-03T12:05:30Z,12,0.920011,0.0,0.147339,"['overtaking', 'diverging']",0.952007

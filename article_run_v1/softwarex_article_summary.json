@@ -1,0 +1,135 @@
+{
+  "software_version": "1.0.0",
+  "run_design": {
+    "steps": 12,
+    "interval_seconds": 30,
+    "scenario_count": 3,
+    "scenario_names": [
+      "head-on",
+      "crossing",
+      "overtaking"
+    ],
+    "input_sha256": "cab408897a551f932cec033ed5605bc642075811fcda0fe4cf5fc5cb6ce67a82"
+  },
+  "validation": {
+    "input_rows": 72,
+    "output_rows": 72,
+    "invalid_rows": 0,
+    "duplicate_rows_removed": 0,
+    "filtered_speed_rows": 0,
+    "warnings": []
+  },
+  "benchmark": {
+    "input_rows": 72,
+    "unique_vessels": 6,
+    "assessments": 36,
+    "emitted_alerts": 6,
+    "near_misses": 3,
+    "maximum_risk_score": 0.993642,
+    "scenarios": [
+      {
+        "name": "head-on",
+        "own_mmsi": 261100001,
+        "target_mmsi": 261100002,
+        "expected_encounter": "head-on",
+        "expected_colreg_rule": "Rule 14",
+        "assessment_count": 12,
+        "converging_assessments": 7,
+        "expected_type_count": 7,
+        "classification_consistency": 1.0,
+        "observed_encounter_types": [
+          "diverging",
+          "head-on"
+        ],
+        "peak_risk_score": 0.993642,
+        "minimum_dcpa_nm": 0.0,
+        "minimum_converging_tcpa_min": 0.221785,
+        "emitted_alerts": 2,
+        "first_emitted_state": "critical",
+        "near_miss_detected": true
+      },
+      {
+        "name": "crossing",
+        "own_mmsi": 261200001,
+        "target_mmsi": 261200002,
+        "expected_encounter": "crossing-starboard",
+        "expected_colreg_rule": "Rule 15",
+        "assessment_count": 12,
+        "converging_assessments": 8,
+        "expected_type_count": 8,
+        "classification_consistency": 1.0,
+        "observed_encounter_types": [
+          "crossing-starboard",
+          "diverging"
+        ],
+        "peak_risk_score": 0.950651,
+        "minimum_dcpa_nm": 0.00055,
+        "minimum_converging_tcpa_min": 0.060479,
+        "emitted_alerts": 2,
+        "first_emitted_state": "critical",
+        "near_miss_detected": true
+      },
+      {
+        "name": "overtaking",
+        "own_mmsi": 261300001,
+        "target_mmsi": 261300002,
+        "expected_encounter": "overtaking",
+        "expected_colreg_rule": "Rule 13",
+        "assessment_count": 12,
+        "converging_assessments": 8,
+        "expected_type_count": 8,
+        "classification_consistency": 1.0,
+        "observed_encounter_types": [
+          "diverging",
+          "overtaking"
+        ],
+        "peak_risk_score": 0.920011,
+        "minimum_dcpa_nm": 0.0,
+        "minimum_converging_tcpa_min": 0.147339,
+        "emitted_alerts": 2,
+        "first_emitted_state": "critical",
+        "near_miss_detected": true
+      }
+    ]
+  },
+  "encounter_type_counts": {
+    "crossing-starboard": 8,
+    "diverging": 13,
+    "head-on": 7,
+    "overtaking": 8
+  },
+  "risk_level_counts": {
+    "critical": 23,
+    "safe": 4,
+    "warning": 3,
+    "watch": 6
+  },
+  "alert_event_counts": {
+    "closed": 1,
+    "deescalated": 2,
+    "no-transition": 17,
+    "opened": 3,
+    "resolving": 1,
+    "suppressed-cooldown": 12
+  },
+  "generated_files": {
+    "assessments_json": "article_run_v1/outputs/assessments.json",
+    "assessments_csv": "article_run_v1/outputs/assessments.csv",
+    "assessments_geojson": "article_run_v1/outputs/assessments.geojson",
+    "alerts_json": "article_run_v1/outputs/alerts.json",
+    "alerts_csv": "article_run_v1/outputs/alerts.csv",
+    "near_misses_json": "article_run_v1/outputs/near_misses.json",
+    "near_misses_csv": "article_run_v1/outputs/near_misses.csv",
+    "risk_trends_json": "article_run_v1/outputs/risk_trends.json",
+    "risk_trends_csv": "article_run_v1/outputs/risk_trends.csv",
+    "hotspots_json": "article_run_v1/outputs/hotspots.json",
+    "hotspots_csv": "article_run_v1/outputs/hotspots.csv",
+    "html_report": "article_run_v1/outputs/report.html",
+    "scenario_summary_csv": "article_run_v1/outputs/softwarex_scenario_summary.csv",
+    "head-on_encounter": "article_run_v1/figures/head-on_encounter.png",
+    "head_on_risk_timeline": "article_run_v1/figures/head_on_risk_timeline.png",
+    "crossing_encounter": "article_run_v1/figures/crossing_encounter.png",
+    "overtaking_encounter": "article_run_v1/figures/overtaking_encounter.png",
+    "environment": "article_run_v1/environment.json"
+  }
+}

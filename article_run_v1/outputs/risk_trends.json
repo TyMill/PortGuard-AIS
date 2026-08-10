@@ -1,0 +1,23 @@
+[
+  {
+    "encounter_id": "enc-9d95e2c6177f",
+    "trend": "decreasing",
+    "slope_per_min": -0.183289,
+    "score_delta": -0.8208,
+    "observation_count": 12
+  },
+  {
+    "encounter_id": "enc-a5bf98d84b8f",
+    "trend": "decreasing",
+    "slope_per_min": -0.130549,
+    "score_delta": -0.699223,
+    "observation_count": 12
+  },
+  {
+    "encounter_id": "enc-f69c22f254bd",
+    "trend": "decreasing",
+    "slope_per_min": -0.100025,
+    "score_delta": -0.546343,
+    "observation_count": 12
+  }
+]

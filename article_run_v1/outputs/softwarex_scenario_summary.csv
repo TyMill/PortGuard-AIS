@@ -1,0 +1,4 @@
+scenario,own_mmsi,target_mmsi,expected_encounter,colreg_context,assessments,converging_assessments,classification_consistency,peak_risk_score,minimum_dcpa_nm,minimum_converging_tcpa_min,emitted_alerts,first_emitted_state,near_miss_detected
+head-on,261100001,261100002,head-on,Rule 14,12,7,1.0,0.993642,0.0,0.221785,2,critical,True
+crossing,261200001,261200002,crossing-starboard,Rule 15,12,8,1.0,0.950651,0.00055,0.060479,2,critical,True
+overtaking,261300001,261300002,overtaking,Rule 13,12,8,1.0,0.920011,0.0,0.147339,2,critical,True

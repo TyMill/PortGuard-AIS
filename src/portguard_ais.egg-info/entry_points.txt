@@ -1,0 +1,2 @@
+[console_scripts]
+portguard-ais = portguard_ais.cli:app
