@@ -3,6 +3,7 @@
 [![Python 3.13+](https://img.shields.io/badge/python-3.13%2B-blue.svg)](https://www.python.org/)
 [![Ruff](https://img.shields.io/badge/code%20style-ruff-261230.svg)](https://docs.astral.sh/ruff/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21871438.svg)](https://doi.org/10.5281/zenodo.21871438)
 
 **PortGuard-AIS** is a modular Python 3.13 framework for explainable collision-risk
 assessment, vessel-encounter classification, near-miss mining, and stateful alerts from AIS data.
