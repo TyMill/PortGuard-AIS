@@ -14,6 +14,12 @@ def main() -> None:
     parser.add_argument("--base-seed", type=int, default=20260817)
     parser.add_argument("--steps", type=int, default=18)
     parser.add_argument("--interval-seconds", type=int, default=30)
+    parser.add_argument(
+        "--position-jitter-nm",
+        type=float,
+        default=0.08,
+        help="Per-vessel trajectory offset standard deviation in nautical miles.",
+    )
     args = parser.parse_args()
 
     rows = write_jmse_campaign(
@@ -22,9 +28,11 @@ def main() -> None:
         base_seed=args.base_seed,
         steps=args.steps,
         interval_seconds=args.interval_seconds,
+        position_jitter_nm=args.position_jitter_nm,
     )
-    print("JMSE multi-seed campaign complete")
+    print("JMSE stochastic geometry campaign complete")
     print(f"rows={len(rows)}")
+    print(f"position_jitter_nm={args.position_jitter_nm}")
     print(f"output_dir={args.output_dir}")
 
 
