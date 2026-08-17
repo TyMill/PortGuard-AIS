@@ -9,12 +9,12 @@ from statistics import mean, stdev
 
 from portguard_ais.assurance.config import ResearchAssuranceConfig
 from portguard_ais.evaluation.jmse_benchmark import JMSEBenchmarkResult, run_jmse_benchmark
+from portguard_ais.evaluation.jmse_robustness import jitter_scenarios
+from portguard_ais.evaluation.jmse_scenarios import jmse_scenarios
 
 
 @dataclass(frozen=True)
 class CampaignRow:
-    """One method result for one research configuration and one random seed."""
-
     seed: int
     variant: str
     method: str
@@ -33,8 +33,6 @@ class CampaignRow:
 
 @dataclass(frozen=True)
 class AggregateRow:
-    """Across-seed mean, standard deviation and normal-approximation 95% CI."""
-
     variant: str
     method: str
     metric: str
@@ -46,14 +44,11 @@ class AggregateRow:
 
 
 def research_variants() -> dict[str, ResearchAssuranceConfig]:
-    """Return the pre-registered ablations used by the controlled campaign."""
     full = ResearchAssuranceConfig()
     return {
         "FULL": full,
         "NO_COUPLING": full.model_copy(
-            update={
-                "scene_risk": full.scene_risk.model_copy(update={"coupling_weight": 0.0})
-            }
+            update={"scene_risk": full.scene_risk.model_copy(update={"coupling_weight": 0.0})}
         ),
         "NO_PERSISTENCE": full.model_copy(
             update={
@@ -69,7 +64,6 @@ def research_variants() -> dict[str, ResearchAssuranceConfig]:
 
 
 def _alert_transitions(result: JMSEBenchmarkResult, field: str) -> int:
-    """Count binary output transitions within scenarios, excluding scenario boundaries."""
     previous_by_scenario: dict[str, bool] = {}
     transitions = 0
     for record in result.records:
@@ -117,24 +111,40 @@ def run_jmse_campaign(
     base_seed: int = 20260817,
     steps: int = 18,
     interval_seconds: int = 30,
+    position_jitter_nm: float = 0.08,
 ) -> tuple[CampaignRow, ...]:
-    """Run the full model and registered ablations across stochastic degradation seeds.
+    """Run stochastic geometry robustness and registered ablations.
 
-    Canonical encounter geometry remains deterministic. The seed changes the stochastic
-    degraded-input perturbations, allowing robustness analysis of the assurance layer
-    without pretending that repeated identical geometry constitutes independent evidence.
+    For every seed the canonical scenario templates are regenerated and then perturbed by
+    one fixed local-plane offset per vessel trajectory. This produces coherent alternative
+    relative geometries without injecting frame-to-frame measurement noise. The same seeded
+    scenario ensemble is reused across ablation variants for paired comparison.
     """
     if seed_count < 2:
         raise ValueError("seed_count must be at least 2")
+    if position_jitter_nm < 0.0:
+        raise ValueError("position_jitter_nm must be non-negative")
+
     rows: list[CampaignRow] = []
-    for variant, config in research_variants().items():
-        for offset in range(seed_count):
-            seed = base_seed + offset
+    for offset in range(seed_count):
+        seed = base_seed + offset
+        canonical = jmse_scenarios(
+            steps=steps,
+            interval_seconds=interval_seconds,
+            seed=seed,
+        )
+        perturbed = jitter_scenarios(
+            canonical,
+            seed=seed,
+            position_jitter_nm=position_jitter_nm,
+        )
+        for variant, config in research_variants().items():
             result = run_jmse_benchmark(
                 steps=steps,
                 interval_seconds=interval_seconds,
                 seed=seed,
                 research_config=config,
+                scenarios=perturbed,
             )
             rows.extend(_campaign_rows(seed, variant, result))
     return tuple(rows)
@@ -188,8 +198,8 @@ def write_jmse_campaign(
     base_seed: int = 20260817,
     steps: int = 18,
     interval_seconds: int = 30,
+    position_jitter_nm: float = 0.08,
 ) -> tuple[CampaignRow, ...]:
-    """Run the robustness/ablation campaign and write manuscript-oriented outputs."""
     output = Path(output_dir)
     output.mkdir(parents=True, exist_ok=True)
     rows = run_jmse_campaign(
@@ -197,6 +207,7 @@ def write_jmse_campaign(
         base_seed=base_seed,
         steps=steps,
         interval_seconds=interval_seconds,
+        position_jitter_nm=position_jitter_nm,
     )
     aggregate = _aggregate(rows)
 
@@ -215,11 +226,12 @@ def write_jmse_campaign(
         "base_seed": base_seed,
         "steps": steps,
         "interval_seconds": interval_seconds,
+        "position_jitter_nm": position_jitter_nm,
         "variants": list(research_variants()),
         "interpretation": (
-            "Seed variation applies to stochastic degraded-input perturbations; canonical "
-            "encounter geometry is deterministic. Confidence intervals therefore describe "
-            "robustness to injected degradation, not independent real-world VTS trials."
+            "Each seed generates a coherent alternative relative geometry through a fixed "
+            "trajectory-level vessel offset. Confidence intervals summarize controlled synthetic "
+            "robustness to geometry perturbation; they are not estimates of real-world VTS accuracy."
         ),
         "aggregate": [asdict(row) for row in aggregate],
     }
