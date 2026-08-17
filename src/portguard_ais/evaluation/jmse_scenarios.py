@@ -95,13 +95,7 @@ def _observation(
     missing_optional: bool = False,
 ) -> VesselObservation:
     course = spec.cog_deg if cog_deg is None else cog_deg
-    lat, lon = _advance(
-        spec.start_lat,
-        spec.start_lon,
-        spec.sog_kn,
-        course,
-        elapsed_seconds,
-    )
+    lat, lon = _advance(spec.start_lat, spec.start_lon, spec.sog_kn, course, elapsed_seconds)
     return VesselObservation(
         timestamp=timestamp,
         mmsi=spec.mmsi,
@@ -252,11 +246,7 @@ def _bottleneck(steps: int, interval_seconds: int, start: datetime) -> JMSEScena
     )
 
 
-def _transient_false_positive(
-    steps: int,
-    interval_seconds: int,
-    start: datetime,
-) -> JMSEScenario:
+def _transient_false_positive(steps: int, interval_seconds: int, start: datetime) -> JMSEScenario:
     specs = (
         _VesselSpec(273200001, 53.9000, 14.5900, 8.0, 90.0, 105.0, 18.0),
         _VesselSpec(273200002, 53.9100, 14.5900, 8.0, 90.0, 100.0, 17.0),
@@ -296,7 +286,7 @@ def _risk_handoff(steps: int, interval_seconds: int, start: datetime) -> JMSESce
     handoff = max(steps // 2, 1)
     for step in range(handoff, steps):
         timestamp = start + timedelta(seconds=step * interval_seconds)
-        elapsed = float((step - handoff) * interval_seconds)
+        elapsed = float((step - handoff + 1) * interval_seconds)
         pivot = snapshots[handoff - 1][1]
         spec = _VesselSpec(
             specs[1].mmsi,
@@ -321,12 +311,27 @@ def _cascading_conflict(steps: int, interval_seconds: int, start: datetime) -> J
     base = _three_vessel(steps, interval_seconds, start)
     snapshots = [list(snapshot) for snapshot in base.snapshots]
     maneuver = min(steps // 2, steps - 1)
+    pivot = snapshots[maneuver - 1][0]
+    source = _convergence_specs(3)[0]
+    changed = _VesselSpec(
+        source.mmsi,
+        pivot.lat,
+        pivot.lon,
+        source.sog_kn,
+        0.0,
+        source.length_m,
+        source.beam_m,
+    )
     for step in range(maneuver, steps):
-        current = snapshots[step][0]
-        snapshots[step][0] = current.model_copy(update={"cog": 0.0, "heading": 0.0})
+        timestamp = start + timedelta(seconds=step * interval_seconds)
+        elapsed = float((step - maneuver + 1) * interval_seconds)
+        snapshots[step][0] = _observation(changed, timestamp, elapsed)
     return JMSEScenario(
         name="cascading-conflict",
-        description="A mid-scenario course change shifts risk from one pair into a coupled three-vessel conflict.",
+        description=(
+            "A mid-scenario course change shifts risk from one pair into a coupled "
+            "three-vessel conflict."
+        ),
         snapshots=tuple(tuple(snapshot) for snapshot in snapshots),
         hazardous_steps=_hazard_window(maneuver, 5, steps),
         evidence_overrides=_default_overrides(steps),
@@ -346,7 +351,6 @@ def _degraded_from(
     start_step = min(5, len(snapshots) - 1)
     end_step = min(start_step + 3, len(snapshots))
     rng = random.Random(seed)
-
     for step in range(start_step, end_step):
         if kind == "delay":
             frozen = snapshots[start_step - 1][0]
@@ -395,7 +399,6 @@ def _degraded_from(
             )
         else:
             raise ValueError(f"unsupported degradation kind: {kind}")
-
     return JMSEScenario(
         name=name,
         description=description,
@@ -406,17 +409,13 @@ def _degraded_from(
 
 
 def jmse_scenarios(
-    *,
-    steps: int = 18,
-    interval_seconds: int = 30,
-    seed: int = 20260817,
+    *, steps: int = 18, interval_seconds: int = 30, seed: int = 20260817
 ) -> tuple[JMSEScenario, ...]:
     """Return the controlled scenario suite used by the JMSE research benchmark."""
     if steps < 12:
         raise ValueError("steps must be at least 12")
     if interval_seconds < 1:
         raise ValueError("interval_seconds must be positive")
-
     start = datetime(2026, 8, 17, 10, 0, tzinfo=UTC)
     head_on = _head_on(steps, interval_seconds, start)
     crossing = _crossing(steps, interval_seconds, start)
@@ -428,7 +427,6 @@ def jmse_scenarios(
     cascading = _cascading_conflict(steps, interval_seconds, start)
     transient = _transient_false_positive(steps, interval_seconds, start)
     handoff = _risk_handoff(steps, interval_seconds, start)
-
     return (
         head_on,
         crossing,
