@@ -54,13 +54,19 @@ def supervise_scene(
     evidence: SceneEvidence,
     config: AssuranceConfig,
 ) -> AssuredSceneDecision:
-    """Gate the authority of a scene-level output using runtime evidence quality."""
+    """Gate scene-output authority using runtime evidence quality and explicit data faults."""
     quality = evidence_quality(evidence, config)
     hard_fallback = (
         evidence.stale_fraction >= config.fallback_stale_fraction
         or evidence.coverage_ratio <= config.fallback_coverage_ratio
         or evidence.latency_ms > config.deadline_ms
         or quality <= config.fallback_quality_threshold
+    )
+    hard_human_verify = evidence.anomaly_fraction >= config.human_verify_anomaly_fraction
+    explicit_degraded = (
+        evidence.stale_fraction >= config.degraded_stale_fraction
+        or evidence.coverage_ratio <= config.degraded_coverage_ratio
+        or evidence.anomaly_fraction >= config.degraded_anomaly_fraction
     )
 
     rationale = [
@@ -81,7 +87,7 @@ def supervise_scene(
             rationale=tuple(rationale),
         )
 
-    if quality <= config.human_verify_quality_threshold:
+    if hard_human_verify or quality <= config.human_verify_quality_threshold:
         rationale.append("automated alert authority withheld; human verification required")
         return AssuredSceneDecision(
             timestamp=assessment.timestamp,
@@ -94,7 +100,7 @@ def supervise_scene(
         )
 
     authority = _nominal_authority(transition.current_state)
-    if quality < config.degraded_quality_threshold:
+    if explicit_degraded or quality < config.degraded_quality_threshold:
         if authority == DecisionAuthority.CRITICAL:
             authority = DecisionAuthority.WARNING
         elif authority == DecisionAuthority.WARNING:
