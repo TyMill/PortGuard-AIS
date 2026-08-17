@@ -230,6 +230,37 @@ Each scenario should be repeated over multiple randomized seeds and severity lev
 - P99 latency;
 - missed computational deadlines.
 
+## Controlled mechanism-verification results
+
+The current controlled synthetic benchmark is intended to verify mechanisms, not claim real-world VTS accuracy or certified navigation safety.
+
+### Progressive baseline result
+
+The strongest pure hazard detector is **B4 (scene + temporal)** with precision 0.7066, recall 0.8252, F1 0.7613, and false-alert rate 0.3379. The assured operational output has F1 0.7492 because runtime assurance may deliberately cap alert authority or replace an automated hazard statement with `HUMAN_VERIFY`/`FALLBACK`.
+
+### Runtime assurance result
+
+Under the controlled degraded-input suite, the revised supervisor detected all 18 degraded steps, produced zero overconfident `CRITICAL` outputs, zero inappropriate interventions, and zero inappropriate fallbacks. Six steps were authority-capped, nine required human verification, and three triggered fallback.
+
+### Ablation result
+
+- Removing graph coupling reduces B4 F1 from 0.7613 to 0.7468 and increases false-alert rate from 0.3379 to 0.3793 while preserving recall at 0.8252. In the current benchmark, coupling mainly improves precision/false-alert control rather than sensitivity.
+- Removing persistence reduces B4 F1 from 0.7613 to 0.6540, recall from 0.8252 to 0.7203, and increases false-alert rate to 0.4759. Persistence is the strongest temporal contribution in the main scenario suite.
+- Removing hysteresis does not change the aggregate benchmark outcomes because the main scenarios do not repeatedly cross the release boundary.
+
+### Dedicated hysteresis probe
+
+A threshold-chatter mechanism probe was therefore evaluated separately. A ten-update sequence oscillating around the warning threshold produced:
+
+- **with hysteresis:** 1 state transition; state remained `WARNING` after entry;
+- **without hysteresis:** 10 state transitions, alternating `WARNING` and `WATCH`.
+
+Thus, hysteresis reduced threshold chatter by **90% (10 -> 1 transitions)** in the dedicated boundary-stress test. This result should be presented as a mechanism-specific stability result, not as an aggregate F1 improvement.
+
+### Multi-seed interpretation
+
+The first 30-seed campaign yielded zero standard deviation in aggregate decision metrics because the seeded perturbations did not cross decision thresholds. These repetitions demonstrate decision-level invariance over the tested perturbation range, but must **not** be treated as 30 independent real-world trials or used to imply inferential significance. A subsequent robustness campaign should perturb relative geometry/severity sufficiently to produce meaningful variation in CPA/TCPA and scene-risk margins.
+
 ## Required article figures
 
 1. system architecture: pairwise PortGuard-AIS -> scene graph -> temporal monitor -> assurance supervisor;
@@ -238,7 +269,8 @@ Each scenario should be repeated over multiple randomized seeds and severity lev
 4. degraded-AIS case showing risk, confidence, and assurance mode;
 5. performance comparison across baselines;
 6. ablation results;
-7. latency distribution or scaling with vessel count.
+7. latency distribution or scaling with vessel count;
+8. dedicated hysteresis boundary-stress figure showing `WARNING/WATCH` chatter with and without hysteresis.
 
 ## Required article tables
 
