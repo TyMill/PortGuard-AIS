@@ -26,6 +26,7 @@ class JMSEStepRecord:
     scenario: str
     step: int
     expected_hazard: bool
+    degraded_input: bool
     vessel_count: int
     edge_count: int
     peak_pairwise_risk: float
@@ -33,6 +34,8 @@ class JMSEStepRecord:
     scene_coupling: float
     evidence_quality_mode: str
     assurance_authority: str
+    assurance_intervened: bool
+    hazard_state_detected: bool
     b0_cpa_tcpa: bool
     b1_pairwise_static: bool
     b2_pairwise_temporal: bool
@@ -56,12 +59,18 @@ class MethodSummary:
 
 @dataclass(frozen=True)
 class AssuranceSummary:
-    """Assurance-specific benchmark counters."""
+    """Assurance-specific benchmark counters and rates."""
 
     degraded_steps: int
+    degraded_steps_detected: int
+    degraded_input_detection_rate: float
     human_verify_steps: int
     fallback_steps: int
+    authority_capped_steps: int
     overconfident_critical_steps: int
+    overconfident_critical_rate: float
+    inappropriate_intervention_steps: int
+    inappropriate_intervention_rate: float
     inappropriate_fallback_steps: int
 
 
@@ -93,6 +102,12 @@ def _is_scene_temporal_alert(state: RiskLevel) -> bool:
 
 
 def _is_assured_alert(authority: DecisionAuthority) -> bool:
+    """Return whether the operational output asks an operator to act or verify.
+
+    FALLBACK deliberately returns False here because it withholds an automated hazard
+    statement. The corresponding latent hazard state is tracked separately through
+    ``hazard_state_detected`` and the assurance metrics.
+    """
     return authority in {
         DecisionAuthority.WARNING,
         DecisionAuthority.CRITICAL,
@@ -127,12 +142,13 @@ def run_jmse_benchmark(
     base_config = portguard_config or PortGuardConfig()
     research = research_config or ResearchAssuranceConfig()
     records: list[JMSEStepRecord] = []
-
-    for scenario in jmse_scenarios(
+    scenarios = jmse_scenarios(
         steps=steps,
         interval_seconds=interval_seconds,
         seed=seed,
-    ):
+    )
+
+    for scenario in scenarios:
         pairwise_pipeline = PortGuardPipeline(base_config)
         pairwise_temporal = AlertStateMachine(base_config.alerts, base_config.thresholds)
         scene_temporal = SceneTemporalMonitor(research.temporal)
@@ -171,12 +187,15 @@ def run_jmse_benchmark(
             b3 = scene.scene_risk_score >= research.temporal.warning
             b4 = _is_scene_temporal_alert(scene_transition.current_state)
             ours = _is_assured_alert(decision.authority)
+            degraded = _is_degraded_scenario_step(scenario, step)
+            intervened = decision.assurance_mode != AssuranceMode.NOMINAL
 
             records.append(
                 JMSEStepRecord(
                     scenario=scenario.name,
                     step=step,
                     expected_hazard=step in scenario.hazardous_steps,
+                    degraded_input=degraded,
                     vessel_count=len(graph.vessels),
                     edge_count=len(graph.edges),
                     peak_pairwise_risk=scene.peak_pairwise_risk,
@@ -184,6 +203,8 @@ def run_jmse_benchmark(
                     scene_coupling=scene.coupling_score,
                     evidence_quality_mode=decision.assurance_mode.value,
                     assurance_authority=decision.authority.value,
+                    assurance_intervened=intervened,
+                    hazard_state_detected=b4,
                     b0_cpa_tcpa=b0,
                     b1_pairwise_static=b1,
                     b2_pairwise_temporal=b2,
@@ -202,7 +223,7 @@ def run_jmse_benchmark(
         ("B2_PAIRWISE_TEMPORAL", "b2_pairwise_temporal"),
         ("B3_SCENE_STATIC", "b3_scene_static"),
         ("B4_SCENE_TEMPORAL", "b4_scene_temporal"),
-        ("OURS_ASSURED", "ours_assured"),
+        ("OURS_ASSURED_OUTPUT", "ours_assured"),
     )
     methods = tuple(
         _binary_summary(
@@ -215,33 +236,39 @@ def run_jmse_benchmark(
         for method, field in method_fields
     )
 
-    scenario_map = {
-        scenario.name: scenario
-        for scenario in jmse_scenarios(
-            steps=steps,
-            interval_seconds=interval_seconds,
-            seed=seed,
-        )
-    }
-    degraded_steps = sum(
-        _is_degraded_scenario_step(scenario_map[record.scenario], record.step)
-        for record in records
-    )
+    degraded_records = [record for record in records if record.degraded_input]
+    nominal_records = [record for record in records if not record.degraded_input]
+    degraded_steps = len(degraded_records)
+    degraded_detected = sum(record.assurance_intervened for record in degraded_records)
     overconfident = sum(
-        _is_degraded_scenario_step(scenario_map[record.scenario], record.step)
-        and record.assurance_authority == DecisionAuthority.CRITICAL.value
-        for record in records
+        record.assurance_authority == DecisionAuthority.CRITICAL.value
+        for record in degraded_records
     )
-    inappropriate_fallback = sum(
-        (not _is_degraded_scenario_step(scenario_map[record.scenario], record.step))
-        and record.fallback
-        for record in records
+    inappropriate_intervention = sum(record.assurance_intervened for record in nominal_records)
+    inappropriate_fallback = sum(record.fallback for record in nominal_records)
+    authority_capped = sum(
+        record.evidence_quality_mode == AssuranceMode.DEGRADED.value for record in records
     )
     assurance = AssuranceSummary(
         degraded_steps=degraded_steps,
+        degraded_steps_detected=degraded_detected,
+        degraded_input_detection_rate=round(
+            degraded_detected / degraded_steps if degraded_steps else 0.0,
+            6,
+        ),
         human_verify_steps=sum(record.human_verify for record in records),
         fallback_steps=sum(record.fallback for record in records),
+        authority_capped_steps=authority_capped,
         overconfident_critical_steps=overconfident,
+        overconfident_critical_rate=round(
+            overconfident / degraded_steps if degraded_steps else 0.0,
+            6,
+        ),
+        inappropriate_intervention_steps=inappropriate_intervention,
+        inappropriate_intervention_rate=round(
+            inappropriate_intervention / len(nominal_records) if nominal_records else 0.0,
+            6,
+        ),
         inappropriate_fallback_steps=inappropriate_fallback,
     )
     return JMSEBenchmarkResult(tuple(records), methods, assurance)
@@ -281,6 +308,17 @@ def write_jmse_benchmark(
         "steps": steps,
         "interval_seconds": interval_seconds,
         "seed": seed,
+        "metric_interpretation": {
+            "B4_SCENE_TEMPORAL": (
+                "Pure scene-hazard detection after temporal filtering; this is the hazard-state "
+                "component of the proposed system before assurance authority gating."
+            ),
+            "OURS_ASSURED_OUTPUT": (
+                "Operational alert/verification output after runtime assurance. FALLBACK withholds "
+                "an automated hazard statement and must not be interpreted as a detector miss "
+                "without consulting hazard_state_detected."
+            ),
+        },
         "controlled_benchmark_notice": (
             "These are controlled synthetic mechanism-verification results, not claims of "
             "real-world VTS accuracy or certified navigation safety."
