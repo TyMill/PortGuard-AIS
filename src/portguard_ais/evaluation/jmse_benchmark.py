@@ -102,12 +102,7 @@ def _is_scene_temporal_alert(state: RiskLevel) -> bool:
 
 
 def _is_assured_alert(authority: DecisionAuthority) -> bool:
-    """Return whether the operational output asks an operator to act or verify.
-
-    FALLBACK deliberately returns False here because it withholds an automated hazard
-    statement. The corresponding latent hazard state is tracked separately through
-    ``hazard_state_detected`` and the assurance metrics.
-    """
+    """Return whether the operational output asks an operator to act or verify."""
     return authority in {
         DecisionAuthority.WARNING,
         DecisionAuthority.CRITICAL,
@@ -137,18 +132,19 @@ def run_jmse_benchmark(
     seed: int = 20260817,
     portguard_config: PortGuardConfig | None = None,
     research_config: ResearchAssuranceConfig | None = None,
+    scenarios: tuple[JMSEScenario, ...] | None = None,
 ) -> JMSEBenchmarkResult:
-    """Run all controlled JMSE scenarios across progressive baselines."""
+    """Run controlled JMSE scenarios across progressive baselines."""
     base_config = portguard_config or PortGuardConfig()
     research = research_config or ResearchAssuranceConfig()
     records: list[JMSEStepRecord] = []
-    scenarios = jmse_scenarios(
+    scenario_suite = scenarios or jmse_scenarios(
         steps=steps,
         interval_seconds=interval_seconds,
         seed=seed,
     )
 
-    for scenario in scenarios:
+    for scenario in scenario_suite:
         pairwise_pipeline = PortGuardPipeline(base_config)
         pairwise_temporal = AlertStateMachine(base_config.alerts, base_config.thresholds)
         scene_temporal = SceneTemporalMonitor(research.temporal)
@@ -163,12 +159,7 @@ def run_jmse_benchmark(
             evidence = scenario.evidence_for_step(step, base_evidence)
             scene = assess_scene_risk(graph, evidence, research.scene_risk)
             scene_transition = scene_temporal.update(scene)
-            decision = supervise_scene(
-                scene,
-                scene_transition,
-                evidence,
-                research.assurance,
-            )
+            decision = supervise_scene(scene, scene_transition, evidence, research.assurance)
 
             pairwise_states = [
                 pairwise_temporal.update(assessment).current_state for assessment in pairwise
@@ -228,10 +219,7 @@ def run_jmse_benchmark(
     methods = tuple(
         _binary_summary(
             method,
-            binary_alert_metrics(
-                expected,
-                [bool(getattr(record, field)) for record in records],
-            ),
+            binary_alert_metrics(expected, [bool(getattr(record, field)) for record in records]),
         )
         for method, field in method_fields
     )
@@ -253,21 +241,18 @@ def run_jmse_benchmark(
         degraded_steps=degraded_steps,
         degraded_steps_detected=degraded_detected,
         degraded_input_detection_rate=round(
-            degraded_detected / degraded_steps if degraded_steps else 0.0,
-            6,
+            degraded_detected / degraded_steps if degraded_steps else 0.0, 6
         ),
         human_verify_steps=sum(record.human_verify for record in records),
         fallback_steps=sum(record.fallback for record in records),
         authority_capped_steps=authority_capped,
         overconfident_critical_steps=overconfident,
         overconfident_critical_rate=round(
-            overconfident / degraded_steps if degraded_steps else 0.0,
-            6,
+            overconfident / degraded_steps if degraded_steps else 0.0, 6
         ),
         inappropriate_intervention_steps=inappropriate_intervention,
         inappropriate_intervention_rate=round(
-            inappropriate_intervention / len(nominal_records) if nominal_records else 0.0,
-            6,
+            inappropriate_intervention / len(nominal_records) if nominal_records else 0.0, 6
         ),
         inappropriate_fallback_steps=inappropriate_fallback,
     )
@@ -284,11 +269,7 @@ def write_jmse_benchmark(
     """Run the controlled benchmark and write manuscript-oriented CSV/JSON outputs."""
     output = Path(output_dir)
     output.mkdir(parents=True, exist_ok=True)
-    result = run_jmse_benchmark(
-        steps=steps,
-        interval_seconds=interval_seconds,
-        seed=seed,
-    )
+    result = run_jmse_benchmark(steps=steps, interval_seconds=interval_seconds, seed=seed)
 
     with (output / "jmse_step_records.csv").open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=list(asdict(result.records[0]).keys()))
@@ -325,7 +306,6 @@ def write_jmse_benchmark(
         ),
     }
     (output / "jmse_benchmark_summary.json").write_text(
-        json.dumps(payload, indent=2, sort_keys=True),
-        encoding="utf-8",
+        json.dumps(payload, indent=2, sort_keys=True), encoding="utf-8"
     )
     return result
