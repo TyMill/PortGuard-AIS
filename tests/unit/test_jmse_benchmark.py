@@ -1,4 +1,5 @@
 from portguard_ais.evaluation.jmse_benchmark import run_jmse_benchmark
+from portguard_ais.evaluation.jmse_robustness import jitter_scenarios
 from portguard_ais.evaluation.jmse_scenarios import jmse_scenarios
 
 
@@ -23,6 +24,32 @@ def test_degraded_scenarios_contain_assurance_injections() -> None:
     assert any(item.stale_fraction >= 0.75 for item in delayed.evidence_overrides)
     assert any(item.coverage_ratio < 1.0 for item in dropout.evidence_overrides)
     assert any(item.mean_pairwise_confidence is not None for item in mixed.evidence_overrides)
+
+
+def test_seeded_geometry_jitter_is_reproducible_and_seed_sensitive() -> None:
+    canonical = jmse_scenarios(steps=12, seed=20260817)
+    first = jitter_scenarios(canonical, seed=101, position_jitter_nm=0.08)
+    repeat = jitter_scenarios(canonical, seed=101, position_jitter_nm=0.08)
+    different = jitter_scenarios(canonical, seed=102, position_jitter_nm=0.08)
+
+    first_observation = first[0].snapshots[0][0]
+    repeated_observation = repeat[0].snapshots[0][0]
+    different_observation = different[0].snapshots[0][0]
+
+    assert first_observation.lat == repeated_observation.lat
+    assert first_observation.lon == repeated_observation.lon
+    assert (
+        first_observation.lat != different_observation.lat
+        or first_observation.lon != different_observation.lon
+    )
+
+
+def test_controlled_benchmark_accepts_injected_geometry_ensemble() -> None:
+    canonical = jmse_scenarios(steps=12, seed=20260817)
+    perturbed = jitter_scenarios(canonical, seed=20260817, position_jitter_nm=0.08)
+    result = run_jmse_benchmark(steps=12, scenarios=perturbed)
+    assert result.records
+    assert len({record.scenario for record in result.records}) == 16
 
 
 def test_controlled_benchmark_returns_progressive_detection_and_assured_output() -> None:
