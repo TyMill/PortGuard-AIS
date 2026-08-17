@@ -252,19 +252,36 @@ def _bottleneck(steps: int, interval_seconds: int, start: datetime) -> JMSEScena
     )
 
 
-def _with_transient_perturbation(base: JMSEScenario, *, name: str) -> JMSEScenario:
-    snapshots = [list(snapshot) for snapshot in base.snapshots]
+def _transient_false_positive(
+    steps: int,
+    interval_seconds: int,
+    start: datetime,
+) -> JMSEScenario:
+    specs = (
+        _VesselSpec(273200001, 53.9000, 14.5900, 8.0, 90.0, 105.0, 18.0),
+        _VesselSpec(273200002, 53.9100, 14.5900, 8.0, 90.0, 100.0, 17.0),
+    )
+    snapshots = [
+        list(snapshot)
+        for snapshot in _generate_linear(
+            specs, steps=steps, interval_seconds=interval_seconds, start=start
+        )
+    ]
     step = min(5, len(snapshots) - 1)
-    target = snapshots[step][0]
-    snapshots[step][0] = target.model_copy(
-        update={"lat": target.lat + 0.006, "lon": target.lon - 0.006}
+    first = snapshots[step][0]
+    second = snapshots[step][1]
+    snapshots[step][0] = first.model_copy(
+        update={"lat": second.lat - 0.0008, "lon": second.lon - 0.0008}
     )
     return JMSEScenario(
-        name=name,
-        description="A single-update position perturbation creates a transient pairwise risk excursion.",
+        name="transient-false-positive",
+        description=(
+            "Two safely separated parallel vessels receive one spurious position update "
+            "that creates a transient apparent conflict."
+        ),
         snapshots=tuple(tuple(snapshot) for snapshot in snapshots),
         hazardous_steps=frozenset(),
-        evidence_overrides=_default_overrides(len(snapshots)),
+        evidence_overrides=_default_overrides(steps),
     )
 
 
@@ -409,7 +426,7 @@ def jmse_scenarios(
     three = _three_vessel(steps, interval_seconds, start)
     five = _five_vessel(steps, interval_seconds, start)
     cascading = _cascading_conflict(steps, interval_seconds, start)
-    transient = _with_transient_perturbation(crossing, name="transient-false-positive")
+    transient = _transient_false_positive(steps, interval_seconds, start)
     handoff = _risk_handoff(steps, interval_seconds, start)
 
     return (
