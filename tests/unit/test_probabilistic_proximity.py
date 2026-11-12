@@ -117,5 +117,5 @@ def test_pair_requires_distinct_vessels_and_timezone() -> None:
             target,
             ZERO,
             ZERO,
-            evaluated_at=datetime(2026, 8, 3, 12),
+            evaluated_at=T0.replace(tzinfo=None),
         )
