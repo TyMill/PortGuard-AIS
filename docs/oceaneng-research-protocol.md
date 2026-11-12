@@ -110,6 +110,16 @@ passages), taking care not to count carried observations as new AIS reports.
   size and traffic-normalized episode rates with suitable uncertainty bands.
 - Computational time and memory scaling with vessel counts and message volume.
 
+### Conditional exposure caveat
+
+The current denominator is **observed and eligible pair-time**, not all vessel
+hours or all true close-range encounters in a port. It depends on the
+upstream pair-selection radius, observation cadence, AIS reception coverage,
+and the permitted age/gap rules. Comparing hotspot intensities across traffic
+periods or ports therefore requires matched observation protocols, coverage
+diagnostics, and sensitivity analyses. Candidate events falling in a cell
+without qualifying exposure are retained as counts but have no numeric rate.
+
 ## Mandatory ablations and controls
 
 - Episode splitting off/on.
