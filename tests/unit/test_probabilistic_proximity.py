@@ -31,7 +31,11 @@ def test_zero_uncertainty_deterministic_head_on_close_approach() -> None:
     own = _ship(1, 14.5, 10.0, 90.0)
     target = _ship(2, 14.51, 10.0, 270.0)
     estimate = estimate_projected_proximity(
-        own, target, ZERO, ZERO, evaluated_at=T0,
+        own,
+        target,
+        ZERO,
+        ZERO,
+        evaluated_at=T0,
         config=ProximityConfig(samples=256, proximity_threshold_nm=0.1),
     )
     assert estimate.proximity_probability == 1.0
@@ -44,7 +48,11 @@ def test_zero_uncertainty_diverging_pair_is_not_projected_to_cross() -> None:
     own = _ship(1, 14.5, 10.0, 270.0)
     target = _ship(2, 14.51, 10.0, 90.0)
     estimate = estimate_projected_proximity(
-        own, target, ZERO, ZERO, evaluated_at=T0,
+        own,
+        target,
+        ZERO,
+        ZERO,
+        evaluated_at=T0,
         config=ProximityConfig(samples=256, proximity_threshold_nm=0.1),
     )
     assert estimate.proximity_probability == 0.0
@@ -77,7 +85,11 @@ def test_age_propagation_uses_measurement_time() -> None:
     own = _ship(1, 14.5, 10, 90, at=T0 - timedelta(seconds=60))
     target = _ship(2, 14.51, 10, 270, at=T0)
     e = estimate_projected_proximity(
-        own, target, ZERO, ZERO, evaluated_at=T0,
+        own,
+        target,
+        ZERO,
+        ZERO,
+        evaluated_at=T0,
         config=ProximityConfig(samples=128),
     )
     assert e.own_age_seconds == 60
@@ -101,5 +113,9 @@ def test_pair_requires_distinct_vessels_and_timezone() -> None:
     target = _ship(2, 14.51, 5, 270)
     with pytest.raises(ValueError, match="timezone"):
         estimate_projected_proximity(
-            own, target, ZERO, ZERO, evaluated_at=datetime(2026, 8, 3, 12),
+            own,
+            target,
+            ZERO,
+            ZERO,
+            evaluated_at=datetime(2026, 8, 3, 12),
         )
