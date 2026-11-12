@@ -99,17 +99,23 @@ def test_no_cross_timestamp_predicate_mixing() -> None:
 
 
 def test_no_nonconverging_false_episode() -> None:
-    assert segment_near_miss_episodes(
-        [_assessment(0, converging=False), _assessment(30, converging=False)],
-        NearMissConfig(),
-    ) == []
+    assert (
+        segment_near_miss_episodes(
+            [_assessment(0, converging=False), _assessment(30, converging=False)],
+            NearMissConfig(),
+        )
+        == []
+    )
 
 
 def test_no_zero_tcpa_false_episode() -> None:
-    assert segment_near_miss_episodes(
-        [_assessment(0, tcpa=0), _assessment(30, tcpa=0)],
-        NearMissConfig(),
-    ) == []
+    assert (
+        segment_near_miss_episodes(
+            [_assessment(0, tcpa=0), _assessment(30, tcpa=0)],
+            NearMissConfig(),
+        )
+        == []
+    )
 
 
 def test_duplicate_timestamp_does_not_satisfy_minimum_observations() -> None:
