@@ -21,4 +21,4 @@ jobs:
       - name: Ruff lint
         run: python -m ruff check src tests
       - name: Pytest suite
-        run: python -m pytest
+        run: python -m pytest --no-cov
