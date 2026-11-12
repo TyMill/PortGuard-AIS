@@ -78,10 +78,22 @@ def test_resampling_wraps_course_and_heading_across_north() -> None:
 def test_resampling_disabled_interpolation_does_not_create_missing_data() -> None:
     frame = pd.DataFrame(
         [
-            {"timestamp": datetime(2026, 8, 3, 12, tzinfo=UTC), "mmsi": 1,
-             "lat": 53.4, "lon": 14.6, "sog": 5.0, "cog": 359.0},
-            {"timestamp": datetime(2026, 8, 3, 12, 1, tzinfo=UTC), "mmsi": 1,
-             "lat": 53.4, "lon": 14.62, "sog": 5.0, "cog": 1.0},
+            {
+                "timestamp": datetime(2026, 8, 3, 12, tzinfo=UTC),
+                "mmsi": 1,
+                "lat": 53.4,
+                "lon": 14.6,
+                "sog": 5.0,
+                "cog": 359.0,
+            },
+            {
+                "timestamp": datetime(2026, 8, 3, 12, 1, tzinfo=UTC),
+                "mmsi": 1,
+                "lat": 53.4,
+                "lon": 14.62,
+                "sog": 5.0,
+                "cog": 1.0,
+            },
         ]
     )
     result = resample_tracks(frame, seconds=30, interpolation_limit=0)
