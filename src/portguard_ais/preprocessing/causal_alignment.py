@@ -77,6 +77,8 @@ def align_causal_snapshots(
             age_seconds=pd.Series(dtype="float64"),
             is_carried=pd.Series(dtype="bool"),
         )
-    return pd.concat(parts, ignore_index=True).sort_values(
-        ["timestamp", "mmsi"], kind="stable"
-    ).reset_index(drop=True)
+    return (
+        pd.concat(parts, ignore_index=True)
+        .sort_values(["timestamp", "mmsi"], kind="stable")
+        .reset_index(drop=True)
+    )
