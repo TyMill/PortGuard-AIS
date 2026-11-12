@@ -1,8 +1,10 @@
 """Optional per-vessel track resampling and short-gap interpolation."""
 
+import numpy as np
 import pandas as pd
 
-_NUMERIC_INTERPOLATION_COLUMNS = ("lat", "lon", "sog", "cog", "heading", "rot")
+_NUMERIC_INTERPOLATION_COLUMNS = ("lat", "lon", "sog", "rot")
+_CIRCULAR_COLUMNS = ("cog", "heading")
 
 
 def resample_tracks(
@@ -27,6 +29,26 @@ def resample_tracks(
                 limit=interpolation_limit,
                 limit_area="inside",
             )
+        # Unwrap angular measurements across 0/360 before interpolating.
+        # Keep actual observed values unchanged.
+        for column in _CIRCULAR_COLUMNS:
+            if column not in resampled or interpolation_limit <= 0:
+                continue
+            original = resampled[column].copy()
+            observed = original.notna()
+            if observed.sum() < 2:
+                continue
+            unwrapped = pd.Series(float("nan"), index=original.index)
+            unwrapped.loc[observed] = np.rad2deg(
+                np.unwrap(np.deg2rad(original.loc[observed].to_numpy(dtype=float)))
+            )
+            filled = unwrapped.interpolate(
+                method="linear",
+                limit=interpolation_limit,
+                limit_area="inside",
+            )
+            missing = ~observed & filled.notna()
+            resampled.loc[missing, column] = filled.loc[missing] % 360.0
         categorical = [column for column in ("vessel_type", "source") if column in resampled]
         if categorical:
             resampled[categorical] = resampled[categorical].ffill().bfill()
