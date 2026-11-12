@@ -14,6 +14,7 @@ import math
 from collections import defaultdict
 from collections.abc import Sequence
 from dataclasses import dataclass
+from itertools import pairwise
 
 from portguard_ais.models import EncounterAssessment
 from portguard_ais.near_miss.episodes import NearMissEpisode
@@ -127,7 +128,7 @@ def _split_segment(
 
     fractions = sorted(set(fractions))
     result: list[tuple[tuple[int, int], float]] = []
-    for begin, end in zip(fractions, fractions[1:], strict=False):
+    for begin, end in pairwise(fractions):
         if end - begin <= 1e-12:
             continue
         middle = (begin + end) / 2.0
@@ -170,7 +171,7 @@ def aggregate_exposure_hotspots(
         for item in sorted(items, key=lambda value: (value.timestamp, value.risk_score)):
             unique[item.timestamp] = item
         ordered = sorted(unique.values(), key=lambda value: value.timestamp)
-        for previous, current in zip(ordered, ordered[1:], strict=False):
+        for previous, current in pairwise(ordered):
             dt = (current.timestamp - previous.timestamp).total_seconds()
             if dt <= 0.0 or dt > config.max_pair_gap_seconds:
                 excluded_segments += 1
