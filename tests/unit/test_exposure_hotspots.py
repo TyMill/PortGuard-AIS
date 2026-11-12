@@ -34,12 +34,8 @@ def _assessment(
     lat = degrees(north_m / EARTH_RADIUS_M)
     lon = degrees(east_m / EARTH_RADIUS_M)
     at = T0 + timedelta(seconds=seconds)
-    own = VesselObservation(
-        timestamp=at, mmsi=pair[0], lat=lat, lon=lon, sog=1.0, cog=90.0
-    )
-    target = VesselObservation(
-        timestamp=at, mmsi=pair[1], lat=lat, lon=lon, sog=1.0, cog=90.0
-    )
+    own = VesselObservation(timestamp=at, mmsi=pair[0], lat=lat, lon=lon, sog=1.0, cog=90.0)
+    target = VesselObservation(timestamp=at, mmsi=pair[1], lat=lat, lon=lon, sog=1.0, cog=90.0)
     return PortGuardPipeline().assess_pair(own, target)
 
 
@@ -98,9 +94,7 @@ def test_pair_counts_deduplicate_identical_timestamps() -> None:
 
 
 def test_long_missing_period_is_not_counted_as_exposure() -> None:
-    config = ExposureGridConfig(
-        origin_lat_deg=0, origin_lon_deg=0, max_pair_gap_seconds=120
-    )
+    config = ExposureGridConfig(origin_lat_deg=0, origin_lon_deg=0, max_pair_gap_seconds=120)
     report = aggregate_exposure_hotspots(
         [_assessment(0, 500), _assessment(3600, 500)],
         [],
