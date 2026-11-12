@@ -83,11 +83,7 @@ def _local_xy(lat: float, lon: float, config: ExposureGridConfig) -> tuple[float
     if not (-90.0 <= lat <= 90.0) or not (-180.0 <= lon <= 180.0):
         raise ValueError("coordinates out of range")
     delta_lon_deg = (lon - config.origin_lon_deg + 180.0) % 360.0 - 180.0
-    x = (
-        EARTH_RADIUS_M
-        * math.radians(delta_lon_deg)
-        * math.cos(math.radians(config.origin_lat_deg))
-    )
+    x = EARTH_RADIUS_M * math.radians(delta_lon_deg) * math.cos(math.radians(config.origin_lat_deg))
     y = EARTH_RADIUS_M * math.radians(lat - config.origin_lat_deg)
     if math.hypot(x, y) > config.max_radius_km * 1000.0:
         raise ValueError("point lies outside configured local-port map extent")
@@ -98,9 +94,7 @@ def _cell(x: float, y: float, cell_size_m: float) -> tuple[int, int]:
     return math.floor(x / cell_size_m), math.floor(y / cell_size_m)
 
 
-def _cell_centre(
-    index: tuple[int, int], config: ExposureGridConfig
-) -> tuple[float, float]:
+def _cell_centre(index: tuple[int, int], config: ExposureGridConfig) -> tuple[float, float]:
     x = (index[0] + 0.5) * config.cell_size_m
     y = (index[1] + 0.5) * config.cell_size_m
     lat = config.origin_lat_deg + math.degrees(y / EARTH_RADIUS_M)
@@ -196,8 +190,8 @@ def aggregate_exposure_hotspots(
             curr_lon = (current.own_position.lon + current.target_position.lon) / 2.0
             x0, y0 = _local_xy(prev_lat, prev_lon, config)
             x1, y1 = _local_xy(curr_lat, curr_lon, config)
-            implied_speed_kn = math.hypot(x1 - x0, y1 - y0) / METRES_PER_NAUTICAL_MILE * (
-                3600.0 / dt
+            implied_speed_kn = (
+                math.hypot(x1 - x0, y1 - y0) / METRES_PER_NAUTICAL_MILE * (3600.0 / dt)
             )
             if implied_speed_kn > config.max_midpoint_speed_kn:
                 excluded_segments += 1
