@@ -30,6 +30,15 @@ remain to be implemented and evaluated.
   tracking evidence age, not proof of current vessel position.
 - `preprocessing/resampling.py`: interpolate COG/heading across 0°/360°
   using angular unwrapping instead of averaging degrees directly.
+- `near_miss/exposure_hotspots.py`: opt-in spatial event-intensity map, counting
+  segmented candidates at their peak-risk midpoint and dividing by *eligible
+  observed pair-hours* in a local metric grid. Pair-time is allocated across
+  traversed cells; long observation gaps and implausibly fast pair-midpoint
+  changes are excluded and reported. Rates with insufficient exposure are
+  undefined, not zero. The denominator is **conditional on the existing
+  PortGuard pair-distance prefilter** and must not be described as all port
+  traffic exposure. This is an exploratory statistic rather than an
+  independently validated maritime casualty-risk index.
 - `risk/probabilistic_proximity.py`: opt-in Monte Carlo estimation of minimum
   projected pair separation over a finite horizon, with input-specific Gaussian
   position/SOG/COG uncertainty assumptions, causal age extrapolation, fixed
@@ -131,6 +140,7 @@ passages), taking care not to count carried observations as new AIS reports.
 The new regression tests are version controlled. The earlier research-branch
 suite passed 66 functional tests in CI before adding the probabilistic module.
 Subsequent CI runs must be checked before declaring this increment verified.
-There has been **no external-data validation**. No B3 event decision threshold,
-uncertainty calibration, or exposure-normalized hotspot method has been
-validated. Numerical experiments are required before any scientific claim.
+There has been **no external-data validation**. No B3 event decision threshold or uncertainty calibration has been validated.
+The new conditional-exposure hotspot implementation is an experimental
+statistic with regression tests; its stability and predictive validity have
+not been assessed on independent port traffic data. Numerical experiments are required before any scientific claim.
