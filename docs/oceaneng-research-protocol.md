@@ -30,6 +30,12 @@ remain to be implemented and evaluated.
   tracking evidence age, not proof of current vessel position.
 - `preprocessing/resampling.py`: interpolate COG/heading across 0°/360°
   using angular unwrapping instead of averaging degrees directly.
+- `risk/probabilistic_proximity.py`: opt-in Monte Carlo estimation of minimum
+  projected pair separation over a finite horizon, with input-specific Gaussian
+  position/SOG/COG uncertainty assumptions, causal age extrapolation, fixed
+  random seed, Wilson sampling interval, and distance quantiles. This is **not**
+  the probability of an actual collision. AIS position-accuracy metadata alone
+  is not sufficient to calibrate a Gaussian standard deviation.
 
 These are engineering prerequisites, **not** evidence of superior collision
 prediction or demonstrated real-world safety effectiveness.
@@ -53,9 +59,11 @@ B1 — legacy PortGuard v1.0 risk score and near-miss miner.
 
 B2 — B1 with improved deterministic episode segmentation (this branch).
 
-B3 — B2 with a **to-be-designed and tested** uncertainty-aware decision
-criterion. This must account for observation age and uncertainty propagation,
-not merely rename the existing confidence heuristic.
+B3 — B2 with an uncertainty-aware event decision rule. The Monte Carlo
+projected-proximity estimator now exists as a **research component**, but its
+threshold, calibration against real error data, time-series aggregation and
+comparative validation are **not yet established**. It must not simply rename
+the legacy confidence heuristic.
 
 For spatial comparison, benchmark raw risk-update density against
 episode-based rates and traffic-exposure-normalized candidate event intensity.
@@ -101,7 +109,9 @@ passages), taking care not to count carried observations as new AIS reports.
 - Causal alignment with max age set to multiple prespecified values.
 - Compare carry-forward with a properly implemented motion-aware
   extrapolation baseline, if implemented, keeping source timestamp provenance.
-- Compare deterministic versus propagated uncertainty after B3 exists.
+- Compare deterministic versus sampled projected-proximity uncertainty; test
+  sensitivity to position/SOG/COG error priors, temporal correlation, bias,
+  geometry, and Monte Carlo sample count.
 - Grid size, exposure denominator and time-window sensitivity.
 
 ## Publication safeguards
@@ -118,6 +128,9 @@ passages), taking care not to count carried observations as new AIS reports.
 
 ## Current validation status
 
-The new regression tests are version controlled, but this document makes
-**no assertion that the full test suite or external validation has passed**.
-The data-dependent experiments and B3/B4 methods have not been executed.
+The new regression tests are version controlled. The earlier research-branch
+suite passed 66 functional tests in CI before adding the probabilistic module.
+Subsequent CI runs must be checked before declaring this increment verified.
+There has been **no external-data validation**. No B3 event decision threshold,
+uncertainty calibration, or exposure-normalized hotspot method has been
+validated. Numerical experiments are required before any scientific claim.
