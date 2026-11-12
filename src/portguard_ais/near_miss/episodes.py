@@ -93,12 +93,8 @@ def segment_near_miss_episodes(
                 continue
             peak_item = max(window, key=lambda a: a.risk_score)
             if peak_item.own_position is not None and peak_item.target_position is not None:
-                midpoint_lat = (
-                    peak_item.own_position.lat + peak_item.target_position.lat
-                ) / 2.0
-                midpoint_lon = (
-                    peak_item.own_position.lon + peak_item.target_position.lon
-                ) / 2.0
+                midpoint_lat = (peak_item.own_position.lat + peak_item.target_position.lat) / 2.0
+                midpoint_lon = (peak_item.own_position.lon + peak_item.target_position.lon) / 2.0
             else:
                 midpoint_lat = None
                 midpoint_lon = None
