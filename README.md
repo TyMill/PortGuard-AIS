@@ -1,5 +1,7 @@
 # PortGuard-AIS
 
+[![CI](https://github.com/TyMill/PortGuard-AIS/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/TyMill/PortGuard-AIS/actions/workflows/ci.yml)
+
 [![Python 3.13+](https://img.shields.io/badge/python-3.13%2B-blue.svg)](https://www.python.org/)
 [![Ruff](https://img.shields.io/badge/code%20style-ruff-261230.svg)](https://docs.astral.sh/ruff/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
