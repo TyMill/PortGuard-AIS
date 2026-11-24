@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: pip
+      - run: python -m pip install -e ".[dev,viz]"
+      - run: python -m ruff format --check src tests
+      - run: python -m ruff check src tests
+      - run: python -m mypy
+      - run: python -m pytest --cov-report=term-missing --cov-report=xml --junitxml=test-results.xml
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-results
+          path: |
+            coverage.xml
+            test-results.xml
+          if-no-files-found: warn
+
+  package:
+    needs: quality
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install build twine
+      - run: python -m build
+      - run: python -m twine check --strict dist/*
+      - name: Smoke test installed wheel and source distribution
+        shell: bash
+        run: |
+          set -eu
+          for artifact in "$GITHUB_WORKSPACE"/dist/*; do
+            envdir=$(mktemp -d)
+            python -m venv "$envdir/venv"
+            "$envdir/venv/bin/python" -m pip install "$artifact"
+            (
+              cd "$envdir"
+              "$envdir/venv/bin/python" -c "from portguard_ais.pipeline import PortGuardPipeline; from portguard_ais.config import PortGuardConfig; PortGuardPipeline(PortGuardConfig())"
+              "$envdir/venv/bin/python" -m pip check
+              "$envdir/venv/bin/portguard-ais" --help
+            )
+            rm -rf "$envdir"
+          done
+      - uses: actions/upload-artifact@v4
+        with:
+          name: distributions
+          path: dist/
+          if-no-files-found: error
