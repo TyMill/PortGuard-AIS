@@ -51,9 +51,9 @@ dev = [
 portguard-ais = "portguard_ais.cli:app"
 
 [project.urls]
-Documentation = "https://github.com/OWNER/PortGuard-AIS#readme"
-Issues = "https://github.com/OWNER/PortGuard-AIS/issues"
-Source = "https://github.com/OWNER/PortGuard-AIS"
+Documentation = "https://github.com/TyMill/PortGuard-AIS#readme"
+Issues = "https://github.com/TyMill/PortGuard-AIS/issues"
+Source = "https://github.com/TyMill/PortGuard-AIS"
 
 [tool.setuptools.packages.find]
 where = ["src"]
